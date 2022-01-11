@@ -5,6 +5,7 @@
       <list>
         <option value="$PROJECT_DIR$/학생 관리 프로그램(집중반 - 엑셀 업로드)/pom.xml" />
         <option value="$PROJECT_DIR$/StudentManagement_Excel/pom.xml" />
+        <option value="$PROJECT_DIR$/학생 관리 프로그램/pom.xml" />
       </list>
     </option>
   </component>

@@ -90,7 +90,7 @@ public class Vacation_week_table {
     }
 
     public static Map<Object, Object> getCell(Row row, int cells) {
-        String[] columns = { "column1", "column2", "column3", "column4", "column5", "column6" };
+        String[] columns = { "column1", "column2", "column3" };
         Map<Object, Object> map = new HashMap<Object, Object>();
         for (int j = 0; j < cells; j++) {
             if (j >= columns.length) {

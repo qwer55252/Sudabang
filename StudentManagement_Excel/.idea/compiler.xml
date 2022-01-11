@@ -9,9 +9,5 @@
         <module name="StudentManagement_Excel" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="StudentManagement_Excel" target="16" />
-      <module name="학생 관리 프로그램" target="16" />
-    </bytecodeTargetLevel>
   </component>
 </project>
