@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/학생 관리 프로그램(집중반 - 엑셀 업로드)/StudentManagement_Excel.iml" filepath="$PROJECT_DIR$/학생 관리 프로그램(집중반 - 엑셀 업로드)/StudentManagement_Excel.iml" />
       <module fileurl="file://$PROJECT_DIR$/학생 관리 프로그램/학생 관리 프로그램.iml" filepath="$PROJECT_DIR$/학생 관리 프로그램/학생 관리 프로그램.iml" />
-      <module fileurl="file://$PROJECT_DIR$/학생 관리 프로그램(집중반 - 엑셀 업로드)/학생 관리 프로그램(집중반 - 엑셀 업로드).iml" filepath="$PROJECT_DIR$/학생 관리 프로그램(집중반 - 엑셀 업로드)/학생 관리 프로그램(집중반 - 엑셀 업로드).iml" />
       <module fileurl="file://$PROJECT_DIR$/학생 관리 프로그램(집중반)/학생 관리 프로그램(집중반).iml" filepath="$PROJECT_DIR$/학생 관리 프로그램(집중반)/학생 관리 프로그램(집중반).iml" />
     </modules>
   </component>
