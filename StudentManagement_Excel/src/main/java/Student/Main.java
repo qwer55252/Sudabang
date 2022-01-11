@@ -1,15 +1,17 @@
 package Student;
 
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.DateUtil;
-import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.hssf.usermodel.HSSFCell;
+import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Iterator;
 
 public class Main {
@@ -52,15 +54,23 @@ public class Main {
                         cellCnt++;
                         continue;
                     }
+                    DataFormatter formatter = new DataFormatter();
 //                    // cell의 타입을 확인 하고, 값을 가져온다.
                     switch (cell.getCellType()) {
-                        case NUMERIC :
-                            if (DateUtil.isCellDateFormatted(cell)) {
-                                System.out.println("<"+cell.getDateCellValue()+">");
-                            } else {
-                                System.out.print("<"+(int)cell.getNumericCellValue() + ">"); //getNumericCellValue 메서드는 기본으로 double형 반환
-                            }
-
+//                        case NUMERIC :
+//                            if (DateUtil.isCellDateFormatted(cell)) {
+//                                Date date = cell.getDateCellValue();
+//                                String cellString = new SimpleDateFormat("yyyy-MM-dd").format(date);
+////                                System.out.println("<"+cell.getDateCellValue()+">");
+//                                System.out.print("<"+cellString+">");
+//                            } else {
+//                                System.out.print("<"+(int)cell.getNumericCellValue() + ">"); //getNumericCellValue 메서드는 기본으로 double형 반환
+//                            }
+//                            break;
+                        case NUMERIC:
+                            // 숫자일 경우, String형으로 변경하여 값을 읽는다.
+                            String value = formatter.formatCellValue(cell);
+                            System.out.print(value);
                             break;
                         case STRING :
                             System.out.print("<"+cell.getStringCellValue() + ">");
