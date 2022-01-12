@@ -1,7 +1,6 @@
 package Student;
 
 public class StudentData {
-    private int num;
     private String name;
     private String attendance;
     private String assignment_performance;
@@ -14,13 +13,6 @@ public class StudentData {
     private String date;
     private String week_num;
 
-    public int getNum() {
-        return num;
-    }
-
-    public void setNum(int num) {
-        this.num = num;
-    }
 
     public String getName() {
         return name;
@@ -112,8 +104,8 @@ public class StudentData {
     public StudentData(){
 
     }
-    public StudentData(int num, String name, String attendance, String assignment_performance, String planner_performance, String concentration, String test_score, String assignment_comment, String textbook, String progress, String date, String week_num) {
-        this.num = num;
+    public StudentData( String name, String attendance, String assignment_performance, String planner_performance, String concentration, String test_score, String assignment_comment, String textbook, String progress, String date, String week_num) {
+
         this.name = name;
         this.attendance = attendance;
         this.assignment_performance = assignment_performance;
