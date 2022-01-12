@@ -5,6 +5,9 @@ package Student;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
+import javax.swing.text.SimpleAttributeSet;
+import javax.swing.text.StyleConstants;
+import javax.swing.text.StyledDocument;
 
 
 import java.awt.*;
@@ -608,17 +611,20 @@ public class Vacation_week_table extends JFrame{
         hwk_state_grid.setBorder(border1);
 
         for(int i=0;i<5;i++){
-            JPanel hwk_panel2_2 = new JPanel();
-            hwk_panel2_2.setBorder(border1);
-            hwk_panel2_2.setBackground(light_gray_color);
 
-            JLabel hwkLabel = new JLabel("<html>"+printList.get(i).getAssignment_comment().replace("\n","<br>")+"</html>");
-            hwkLabel.setHorizontalAlignment(JLabel.CENTER);
-            hwkLabel.setFont(plainFont);
-            hwk_panel2_2.add(hwkLabel);
+            //과제 란이 작기 때문에 자동 줄바꿈 처리가 되는 JTextPane사용
+            JTextPane tpName = new JTextPane();
+            tpName.setEditable(false);
+            tpName.setBackground(light_gray_color);
+            tpName.setText(printList.get(i).getAssignment_comment());
 
+            //tpName의 styleDocument를 가져와 가운데 정렬 설정
+            StyledDocument doc = tpName.getStyledDocument();
+            SimpleAttributeSet ce = new SimpleAttributeSet();
+            StyleConstants.setAlignment(ce, StyleConstants.ALIGN_CENTER);
+            doc.setParagraphAttributes(0, doc.getLength(), ce, false);
+            hwk_state_grid.add(tpName);
 
-            hwk_state_grid.add(hwk_panel2_2);
 
         }
 
@@ -684,7 +690,7 @@ public class Vacation_week_table extends JFrame{
             tst_panel2_2.setBorder(border1);
             tst_panel2_2.setBackground(light_gray_color);
 
-            JLabel testLabel2_2  = new JLabel(printList.get(i).getTest_score());
+            JLabel testLabel2_2  = new JLabel("<html>"+printList.get(i).getTest_score().replace("\n","<br>")+"</html>");
             testLabel2_2.setFont(new Font("Dialog",Font.BOLD,20));
             tst_panel2_2.add(testLabel2_2);
 
@@ -744,6 +750,7 @@ public class Vacation_week_table extends JFrame{
 
         setSize(1300, 860);
         setVisible(true);
+//        dispose();
 
         // Create test file
         File test1 = new File("C:\\Users\\home\\Desktop\\집중반JFrame캡쳐\\"+sName+" "+sWeekNum+".png");

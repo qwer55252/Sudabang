@@ -1,8 +1,6 @@
 package Student;
 
-import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.ss.usermodel.*;
-import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
@@ -47,7 +45,7 @@ public class Main {
             // 모든 행(row)들을 조회한다. -> 첫 번째 행은 무시(학생 이름)
             int rowCnt = 0;
             Iterator<Row> rowIterator = sheet.iterator();
-            ArrayList<StudentData> studentList = new ArrayList<StudentData>(); //전체 학생들 정보
+            ArrayList<StudentData> studentList = new ArrayList<>(); //전체 학생들 정보
             while (rowIterator.hasNext()) {
                 Row row = rowIterator.next();
                 if(isRowEmpty(row)) break; //빈 행이 나오면 정지 -> 실수로 빈 행이 나오는 경우엔 어떻게 해야할까?
@@ -115,7 +113,6 @@ public class Main {
                 //studentList에 한 명씩 추가
                     studentList.add(s);
                 rowCnt++;
-                cellCnt=0; //초기화
             }
             //추가적으로 주차와 학생 이름 리스트를 만들어 준다.
             ArrayList<String> nameList;
@@ -144,7 +141,7 @@ public class Main {
             for (String weekNum : weekNumList) { //한 주차에 대해서
                 for (String name : nameList) {
                     if(cnt==1) break;
-                    new Vacation_week_table(studentList, "윤서연", "8월 2주차");
+                    new Vacation_week_table(studentList, name, weekNum);
                     cnt++;
                 }
                 break;
