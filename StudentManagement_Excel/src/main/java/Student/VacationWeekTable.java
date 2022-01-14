@@ -16,13 +16,15 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
+// 기능 : sName학생 userMonth월 userWeek주차 주간관리표 생성, 캡처 후 저장
+public class VacationWeekTable extends JFrame{
+    public static String saveFilePath;
+    public VacationWeekTable(ArrayList<StudentData> sList, String sName, String userMonth, String sWeekNum, String saveFilePath) {
+        this.saveFilePath = saveFilePath; // 저장 경로 지정
 
-public class Vacation_week_table extends JFrame{
-
-    public Vacation_week_table(ArrayList<StudentData> sList, String sName, String sWeekNum) {
 //        int k = 0; //k는 몇 번째 학생인지 -> 테스트용
         ArrayList<StudentData> printList = new ArrayList<StudentData>(); //출력할 학생의 정보들
-        for (StudentData studentData : sList) {
+        for (StudentData studentData : sList) { // 주간관리표 한 줄에 대하여
             if (studentData.getName().equals(sName) && studentData.getWeek_num().equals(sWeekNum)) {
                 printList.add(studentData);
             }
@@ -76,7 +78,7 @@ public class Vacation_week_table extends JFrame{
         title.setPreferredSize(new Dimension(this.getWidth(), 30));
         title.setBackground(Color.white);
 
-        JLabel title_label = new JLabel("<"+sName+" 학생 "+sWeekNum+" 주간관리표>");
+        JLabel title_label = new JLabel("<"+sName+" 학생 "+sWeekNum +" 주간관리표>");
         title_label.setFont(title_font);
         title_label.setHorizontalAlignment(JLabel.CENTER);
         title.add(title_label);
@@ -752,14 +754,21 @@ public class Vacation_week_table extends JFrame{
         setVisible(true);
 //        dispose();
 
+
+
+
+
+
         // Create test file
-        File test1 = new File("C:\\Users\\home\\Desktop\\집중반JFrame캡쳐\\"+sName+" "+sWeekNum+".png");
+        File test1 = new File(saveFilePath + sName + " " + sWeekNum+".png");
+
 
         // Use the ImageIO API to write the bufferedImage to a temporary file
         try {
             BufferedImage im = new BufferedImage(c.getWidth(), c.getHeight(), BufferedImage.TYPE_INT_ARGB);
             Graphics2D g2d = im.createGraphics();
             c.printAll(g2d);
+
             g2d.dispose();
             ImageIO.write(im, "png", test1);
         } catch (IOException e) {
@@ -767,4 +776,3 @@ public class Vacation_week_table extends JFrame{
         }
     }
 }
-

@@ -10,7 +10,14 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-public class Main {
+
+// 기능 : filePath/fileName 엑셀파일을 읽어서 userMonth월 userweek주차 모든 학생의 주간관리표 캡처본 저장
+public class SaveVacationWeektable {
+    public static String loadFilePath;
+    public static String loadFileName;
+    public static String saveFilePath;
+    public static String userWeek;
+    public static String userMonth;
 
     //Row가 비었는지 확인하는 메서드
     public static boolean isRowEmpty(Row row) {
@@ -22,12 +29,19 @@ public class Main {
         return true;
     }
 
-    //엑셀 데이터 읽어오기 -> studentList(학생 전체), weekNumList(주차 이름), nameList(학생 이름) 생성
-    public static String filePath = "C:\\Users\\home\\Desktop";
-    public static String fileNm = "고1 B 수학집중반 관리표.xlsx";
-    public static void main(String[] args) {
+
+    public SaveVacationWeektable (String loadFilePath, String loadFileName, String saveFilePath, String userMonth, String userWeek) {
+        this.loadFilePath = loadFilePath;
+        this.loadFileName = loadFileName;
+        this.saveFilePath = saveFilePath;
+        this.userMonth = userMonth;
+        this.userWeek = userWeek;
+
+
+        //엑셀 데이터 읽어오기 -> studentList(학생 전체), weekNumList(주차 이름), nameList(학생 이름) 생성
+
         try {
-            FileInputStream file = new FileInputStream(new File(filePath, fileNm));
+            FileInputStream file = new FileInputStream(new File(loadFilePath, loadFileName));
 
             // 엑셀 파일로 Workbook instance를 생성한다.
             XSSFWorkbook workbook = new XSSFWorkbook(file);
@@ -106,12 +120,13 @@ public class Main {
                         case 9 -> s.setTextbook(value);
                         case 10 -> s.setProgress(value);
                         case 14 -> s.setWeek_num(value);
+
                     }
                     cellCnt++;
                 }
 //                System.out.println();
                 //studentList에 한 명씩 추가
-                    studentList.add(s);
+                studentList.add(s);
                 rowCnt++;
             }
             //추가적으로 주차와 학생 이름 리스트를 만들어 준다.
@@ -136,20 +151,20 @@ public class Main {
 
             file.close();
 
+
             //실행
-            int cnt = 0; //연습용
             for (String weekNum : weekNumList) { //한 주차에 대해서
-                for (String name : nameList) {
-                    if(cnt==1) break;
-                    new Vacation_week_table(studentList, name, weekNum);
-                    cnt++;
+                for (String name : nameList) { // 각각의 학생들에 대하여 주간관리표 저장
+                    new VacationWeekTable(studentList, name, userMonth, weekNum, saveFilePath);
                 }
                 break;
             }
+
             System.out.println("작업이 끝났습니다");
 
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
 }
