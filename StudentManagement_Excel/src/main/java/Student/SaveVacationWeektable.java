@@ -72,9 +72,9 @@ public class SaveVacationWeektable {
                 Iterator<Cell> cellIterator = row.cellIterator();
                 StudentData s = new StudentData(); //학생 한 명의 정보를 저장할 객체 -> studentList에 넣어줄거임
                 int cellCnt = 0; //11번째 셀 까지만
-                while (cellIterator.hasNext() && cellCnt!=15) {
+                while (cellIterator.hasNext() && cellCnt!=13) {
                     Cell cell = cellIterator.next();
-                    if(cellCnt==0||cellCnt==11||cellCnt==12||cellCnt==13){ //순번, 월, 주, 열1 무시
+                    if(cellCnt==0){ //순번 무시
                         cellCnt++;
                         continue;
                     }
@@ -104,8 +104,7 @@ public class SaveVacationWeektable {
                         case FORMULA -> { //셀에 수식이 있는 경우엔 FormulaEvaluator를 사용하면 결과값을 얻을 수 있다.
                             FormulaEvaluator formulaEval = workbook.getCreationHelper().createFormulaEvaluator();
                             value = formulaEval.evaluate(cell).formatAsString();
-                            value = value.substring(1,7);
-//                            System.out.print(value);
+                            value = value.substring(0,value.length()-2);
                         }
                     }
                     switch (cellCnt){ //switch문을 사용하면 if~if else보다는 좀 더 코드가 보기 좋아짐
@@ -119,9 +118,10 @@ public class SaveVacationWeektable {
                         case 8 -> s.setAssignment_comment(value);
                         case 9 -> s.setTextbook(value);
                         case 10 -> s.setProgress(value);
-                        case 14 -> s.setWeek_num(value);
-
+                        case 11 -> s.setMonth(value);
+                        case 12 -> s.setWeek(value);
                     }
+                    s.setWeek_num(s.getMonth()+"월 "+s.getWeek()+"주차");
                     cellCnt++;
                 }
 //                System.out.println();
@@ -129,35 +129,23 @@ public class SaveVacationWeektable {
                 studentList.add(s);
                 rowCnt++;
             }
-            //추가적으로 주차와 학생 이름 리스트를 만들어 준다.
+            //출력할 학생들 이름 리스트를 만들어 준다.
             ArrayList<String> nameList;
-            ArrayList<String> weekNumList;
-
-            //주차 리스트
-            weekNumList = new ArrayList<String>();
-            for (StudentData data : studentList) {
-                if (!weekNumList.contains(data.getWeek_num())) {
-                    weekNumList.add(data.getWeek_num());
-                }
-            }
 
             //이름 리스트
             nameList = new ArrayList<String>();
-            for (StudentData studentData : studentList) {
-                if (!nameList.contains(studentData.getName())) {
-                    nameList.add(studentData.getName());
+            for (StudentData s : studentList) {
+                if ((s.getWeek().equals(userWeek)&&s.getMonth().equals(userMonth)) && !nameList.contains(s.getName())) {
+                    nameList.add(s.getName());
                 }
             }
 
             file.close();
 
 
-            //실행
-            for (String weekNum : weekNumList) { //한 주차에 대해서
-                for (String name : nameList) { // 각각의 학생들에 대하여 주간관리표 저장
-                    new VacationWeekTable(studentList, name, userMonth, weekNum, saveFilePath);
-                }
-                break;
+            //userMonth, userWeek 주차 실행
+            for (String name : nameList){
+                new VacationWeekTable(studentList, name, userMonth, userWeek, saveFilePath);
             }
 
             System.out.println("작업이 끝났습니다");

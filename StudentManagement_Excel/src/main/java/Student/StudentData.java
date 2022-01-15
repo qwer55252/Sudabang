@@ -12,7 +12,24 @@ public class StudentData {
     private String progress;
     private String date;
     private String week_num;
+    private String month;
+    private String week;
 
+    public String getMonth() {
+        return month;
+    }
+
+    public void setMonth(String month) {
+        this.month = month;
+    }
+
+    public String getWeek() {
+        return week;
+    }
+
+    public void setWeek(String week) {
+        this.week = week;
+    }
 
     public String getName() {
         return name;
@@ -104,8 +121,8 @@ public class StudentData {
     public StudentData(){
 
     }
-    public StudentData( String name, String attendance, String assignment_performance, String planner_performance, String concentration, String test_score, String assignment_comment, String textbook, String progress, String date, String week_num) {
 
+    public StudentData(String week_num, String name, String attendance, String assignment_performance, String planner_performance, String concentration, String test_score, String assignment_comment, String textbook, String progress, String date, String month, String week) {
         this.name = name;
         this.attendance = attendance;
         this.assignment_performance = assignment_performance;
@@ -116,9 +133,10 @@ public class StudentData {
         this.textbook = textbook;
         this.progress = progress;
         this.date = date;
+        this.month = month;
+        this.week = week;
         this.week_num = week_num;
     }
-
 }
 
 

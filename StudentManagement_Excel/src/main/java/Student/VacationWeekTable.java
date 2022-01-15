@@ -19,13 +19,13 @@ import java.util.ArrayList;
 // 기능 : sName학생 userMonth월 userWeek주차 주간관리표 생성, 캡처 후 저장
 public class VacationWeekTable extends JFrame{
     public static String saveFilePath;
-    public VacationWeekTable(ArrayList<StudentData> sList, String sName, String userMonth, String sWeekNum, String saveFilePath) {
+    public VacationWeekTable(ArrayList<StudentData> sList, String sName, String userMonth, String userWeek, String saveFilePath) {
         this.saveFilePath = saveFilePath; // 저장 경로 지정
 
 //        int k = 0; //k는 몇 번째 학생인지 -> 테스트용
         ArrayList<StudentData> printList = new ArrayList<StudentData>(); //출력할 학생의 정보들
         for (StudentData studentData : sList) { // 주간관리표 한 줄에 대하여
-            if (studentData.getName().equals(sName) && studentData.getWeek_num().equals(sWeekNum)) {
+            if (studentData.getName().equals(sName) && (studentData.getMonth().equals(userMonth) && studentData.getWeek().equals(userWeek))){
                 printList.add(studentData);
             }
         }
@@ -78,7 +78,7 @@ public class VacationWeekTable extends JFrame{
         title.setPreferredSize(new Dimension(this.getWidth(), 30));
         title.setBackground(Color.white);
 
-        JLabel title_label = new JLabel("<"+sName+" 학생 "+sWeekNum +" 주간관리표>");
+        JLabel title_label = new JLabel("<"+sName+" 학생 "+userMonth+"월 "+userWeek+"주차"+" 주간관리표"+">");
         title_label.setFont(title_font);
         title_label.setHorizontalAlignment(JLabel.CENTER);
         title.add(title_label);
@@ -760,7 +760,7 @@ public class VacationWeekTable extends JFrame{
 
 
         // Create test file
-        File test1 = new File(saveFilePath + sName + " " + sWeekNum+".png");
+        File test1 = new File(saveFilePath + sName + " " +userMonth+"월 "+userWeek+"주차"+".png");
 
 
         // Use the ImageIO API to write the bufferedImage to a temporary file
