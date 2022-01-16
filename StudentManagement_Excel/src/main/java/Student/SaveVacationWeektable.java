@@ -21,10 +21,10 @@ public class SaveVacationWeektable {
 
     //Row가 비었는지 확인하는 메서드
     public static boolean isRowEmpty(Row row) {
-        for (int c = row.getFirstCellNum(); c < row.getLastCellNum(); c++) {
-            Cell cell = row.getCell(c);
-            if (cell != null && cell.getCellType() != CellType.BLANK)
-                return false;
+        int c = row.getFirstCellNum()+2;
+        Cell cell = row.getCell(c);
+        if (cell != null && cell.getCellType() != CellType.BLANK) {
+            return false;
         }
         return true;
     }
@@ -62,11 +62,11 @@ public class SaveVacationWeektable {
             ArrayList<StudentData> studentList = new ArrayList<>(); //전체 학생들 정보
             while (rowIterator.hasNext()) {
                 Row row = rowIterator.next();
-                if(isRowEmpty(row)) break; //빈 행이 나오면 정지 -> 실수로 빈 행이 나오는 경우엔 어떻게 해야할까?
                 if(rowCnt==0||rowCnt==1){
                     rowCnt++;
                     continue;
                 }
+                if(isRowEmpty(row)) break; //빈 행이 나오면 정지 -> 실수로 빈 행이 나오는 경우엔 어떻게 해야할까?
 //                if(rowCnt==5) break; //열 이름과 3명만 출력
                 // 각각의 행에 존재하는 모든 열(cell)을 순회한다.
                 Iterator<Cell> cellIterator = row.cellIterator();
@@ -129,6 +129,7 @@ public class SaveVacationWeektable {
                 studentList.add(s);
                 rowCnt++;
             }
+            System.out.println(rowCnt+"!");
             //출력할 학생들 이름 리스트를 만들어 준다.
             ArrayList<String> nameList;
 

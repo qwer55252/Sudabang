@@ -29,8 +29,9 @@ public class VacationWeekTable extends JFrame{
                 printList.add(studentData);
             }
         }
+        int printSize = printList.size();
         //부족한 수만큼 '-'데이터로 채운 학생 인스턴스 추가
-        for(int i=0;i<5-printList.size();i++){
+        for(int i=0;i<5-printSize;i++){
             StudentData nullData = new StudentData();
             nullData.setName(sName);
             nullData.setAttendance("-");
@@ -614,7 +615,7 @@ public class VacationWeekTable extends JFrame{
 
         for(int i=0;i<5;i++){
 
-            //과제 란이 작기 때문에 자동 줄바꿈 처리가 되는 JTextPane사용
+//            //과제 란이 작기 때문에 자동 줄바꿈 처리가 되는 JTextPane사용
             JTextPane tpName = new JTextPane();
             tpName.setEditable(false);
             tpName.setBackground(light_gray_color);
@@ -626,8 +627,6 @@ public class VacationWeekTable extends JFrame{
             StyleConstants.setAlignment(ce, StyleConstants.ALIGN_CENTER);
             doc.setParagraphAttributes(0, doc.getLength(), ce, false);
             hwk_state_grid.add(tpName);
-
-
         }
 
 
