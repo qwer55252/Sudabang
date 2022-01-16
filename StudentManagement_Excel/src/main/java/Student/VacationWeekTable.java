@@ -309,7 +309,7 @@ public class VacationWeekTable extends JFrame{
             pro_panel4_2.setBackground(light_gray_color);
 
             JLabel proLabel = new JLabel("<html>"+printList.get(i).getProgress().replace("\n","<br>")+"</html>");
-            proLabel.setHorizontalAlignment(JLabel.LEFT);
+            proLabel.setHorizontalAlignment(JLabel.CENTER);
             proLabel.setFont(plainFont);
             pro_panel4_2.add(proLabel);
 
