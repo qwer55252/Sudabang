@@ -12,12 +12,14 @@ import java.util.*;
 
 
 // 기능 : filePath/fileName 엑셀파일을 읽어서 userMonth월 userweek주차 모든 학생의 주간관리표 캡처본 저장
-public class SaveVacationWeektable {
+public class ReadExcel {
     public static String loadFilePath;
     public static String loadFileName;
     public static String saveFilePath;
     public static String userWeek;
     public static String userMonth;
+    public ArrayList<StudentData> studentList;
+    public ArrayList<String> nameList;
 
     //Row가 비었는지 확인하는 메서드
     public static boolean isRowEmpty(Row row) {
@@ -30,7 +32,7 @@ public class SaveVacationWeektable {
     }
 
 
-    public SaveVacationWeektable (String loadFilePath, String loadFileName, String saveFilePath, String userMonth, String userWeek) {
+    public ReadExcel(String loadFilePath, String loadFileName, String saveFilePath, String userMonth, String userWeek) {
         this.loadFilePath = loadFilePath;
         this.loadFileName = loadFileName;
         this.saveFilePath = saveFilePath;
@@ -67,7 +69,7 @@ public class SaveVacationWeektable {
                     continue;
                 }
                 if(isRowEmpty(row)) break; //빈 행이 나오면 정지 -> 실수로 빈 행이 나오는 경우엔 어떻게 해야할까?
-//                if(rowCnt==5) break; //열 이름과 3명만 출력
+
                 // 각각의 행에 존재하는 모든 열(cell)을 순회한다.
                 Iterator<Cell> cellIterator = row.cellIterator();
                 StudentData s = new StudentData(); //학생 한 명의 정보를 저장할 객체 -> studentList에 넣어줄거임
@@ -129,7 +131,7 @@ public class SaveVacationWeektable {
                 studentList.add(s);
                 rowCnt++;
             }
-            System.out.println(rowCnt+"!");
+            System.out.println(rowCnt+"개의 학생 데이터를 저장했습니다!");
             //출력할 학생들 이름 리스트를 만들어 준다.
             ArrayList<String> nameList;
 
@@ -143,13 +145,8 @@ public class SaveVacationWeektable {
 
             file.close();
 
-
-            //userMonth, userWeek 주차 실행
-            for (String name : nameList){
-                new VacationWeekTable(studentList, name, userMonth, userWeek, saveFilePath);
-            }
-
-            System.out.println("작업이 끝났습니다");
+            this.nameList = nameList;
+            this.studentList = studentList;
 
         } catch (IOException e) {
             e.printStackTrace();
