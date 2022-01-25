@@ -7,7 +7,19 @@
     <groupId>org.example</groupId>
     <artifactId>StudentManagement_Excel</artifactId>
     <version>1.0-SNAPSHOT</version>
-
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>14</source>
+                    <target>14</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+    <packaging>jar</packaging>
     <dependencies>
         <dependency>
             <groupId>org.apache.poi</groupId>
@@ -23,24 +35,12 @@
     <properties>
         <maven.compiler.source>16</maven.compiler.source>
         <maven.compiler.target>16</maven.compiler.target>
+<!--        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>-->
+<!--        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>-->
+<!--        <java.version>1.8</java.version>-->
+<!--        <maven.compiler.source>1.8</maven.compiler.source>-->
+<!--        <maven.compiler.target>1.8</maven.compiler.target>-->
+<!--        <start-class>시작 이름 </start-class>-->
+<!--        <webapp.lib>${basedir}/src/lib</webapp.lib>-->
     </properties>
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-assembly-plugin</artifactId>
-                <version>2.2</version>
-                <configuration>
-                    <descriptorRefs>
-                        <descriptorRef>jar-with-dependencies</descriptorRef>
-                    </descriptorRefs>
-                    <archive>
-                        <manifest>
-                            <mainClass> <!--메인 클래스의 path --> </mainClass>
-                        </manifest>
-                    </archive>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
 </project>
