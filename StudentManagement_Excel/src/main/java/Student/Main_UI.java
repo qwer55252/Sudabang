@@ -55,6 +55,8 @@ public class Main_UI extends JFrame {
         setTitle("엑셀 캡처 프로그램");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+        System.out.println("Please Pull this pussy");
+
         Container c = getContentPane();
         c.setLayout(new GridLayout(4, 2));
 
