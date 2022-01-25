@@ -28,6 +28,8 @@ public class VacationWeekTable extends JFrame{
             if (studentData.getName().equals(sName) && (studentData.getMonth().equals(userMonth) && studentData.getWeek().equals(userWeek))){
                 printList.add(studentData);
             }
+//            System.out.println("studentData("+k+") : "+studentData);
+//            k++;
         }
         int printSize = printList.size();
         //부족한 수만큼 '-'데이터로 채운 학생 인스턴스 추가
@@ -52,7 +54,7 @@ public class VacationWeekTable extends JFrame{
         // font
         Font title_font = new Font("Dialog",Font.PLAIN, 15);
         Font font1 = new Font("Dialog",Font.BOLD, 13);
-        Font font2 = new Font("Dialog", Font.BOLD, 15);
+        Font font2 = new Font("Dialog", Font.BOLD, 18);
         Font font3 = new Font("Dialog", Font.PLAIN, 15);
         Font plainFont = new Font("Dialog", Font.PLAIN, 11);
         Font bigFont = new Font("Dialog",Font.BOLD, 40);
@@ -303,16 +305,24 @@ public class VacationWeekTable extends JFrame{
         pah_panel4_1.add(pah_pro_label, BorderLayout.CENTER);
 
         for(int i=0;i<5;i++){
-            JPanel pah_panel4_2 = new JPanel();
-            pah_panel4_2.setBorder(border1);
-            pah_panel4_2.setBackground(light_gray_color);
+            JPanel pah_panel4_grid_i = new JPanel();
+            pah_panel4_grid_i.setBorder(border1);
+            pah_panel4_grid_i.setBackground(light_gray_color);
 
-            JLabel proLabel = new JLabel("<html>"+printList.get(i).getProgress().replace("\n","<br>")+"</html>");
-            proLabel.setHorizontalAlignment(JLabel.CENTER);
-            proLabel.setFont(plainFont);
-            pah_panel4_2.add(proLabel);
+            //진도 란이 작동기 때문에 자동 줄바꿈 처리가 되는 JTextPane사용
+            JTextPane tpName = new JTextPane();
+            tpName.setEditable(false);
+            tpName.setBackground(light_gray_color);
+            tpName.setText(printList.get(i).getProgress());
 
-            pah_panel4_grid.add(pah_panel4_2);
+            //tpName의 styleDocument를 가져와 가운데 정렬 설정
+            StyledDocument doc = tpName.getStyledDocument();
+            SimpleAttributeSet ce = new SimpleAttributeSet();
+            StyleConstants.setAlignment(ce, StyleConstants.ALIGN_CENTER);
+            doc.setParagraphAttributes(0, doc.getLength(), ce, false);
+
+            pah_panel4_grid_i.add(tpName);
+            pah_panel4_grid.add(pah_panel4_grid_i);
 
         }
 
@@ -343,11 +353,11 @@ public class VacationWeekTable extends JFrame{
         pah_panel5_1.add(pah_hwk_label, BorderLayout.CENTER);
 
         for(int i=0;i<5;i++){
-            JPanel pah_panel5_2 = new JPanel();
-            pah_panel5_2.setBorder(border1);
-            pah_panel5_2.setBackground(light_gray_color);
+            JPanel pah_panel5_grid_i = new JPanel();
+            pah_panel5_grid_i.setBorder(border1);
+            pah_panel5_grid_i.setBackground(light_gray_color);
 
-            //과제 란이 작기 때문에 자동 줄바꿈 처리가 되는 JTextPane사용
+            //과제 란이 작동기 때문에 자동 줄바꿈 처리가 되는 JTextPane사용
             JTextPane tpName = new JTextPane();
             tpName.setEditable(false);
             tpName.setBackground(light_gray_color);
@@ -359,8 +369,8 @@ public class VacationWeekTable extends JFrame{
             StyleConstants.setAlignment(ce, StyleConstants.ALIGN_CENTER);
             doc.setParagraphAttributes(0, doc.getLength(), ce, false);
 
-            pah_panel5_2.add(tpName);
-            pah_panel5_grid.add(pah_panel5_2);
+            pah_panel5_grid_i.add(tpName);
+            pah_panel5_grid.add(pah_panel5_grid_i);
 
         }
 
@@ -608,79 +618,6 @@ public class VacationWeekTable extends JFrame{
         planner.add(pln_panel7);
 
 
-//
-//        //------------------------------------------------------------
-//        // <과제 란>
-//        JPanel homework = new JPanel();
-//        homework.setLayout(null);
-//        homework.setSize(1300, 90);
-//        homework.setBorder(border2);
-//
-//
-//        JPanel hwk_panel1 = new JPanel(new BorderLayout()); // default : FlowLayout -> 맨 위에 가운데에 설정
-//        hwk_panel1.setBounds(0, 0, 50, 90); // homework의 (0, 0)위치에 50X90 삽입
-//        hwk_panel1.setBorder(border1);
-//        hwk_panel1.setBackground(light_red_color);
-//
-//        JLabel hwk_label1 = new JLabel("과제");
-//        hwk_label1.setFont(font1);
-//        hwk_label1.setHorizontalAlignment(JLabel.CENTER);
-//        hwk_label1.setVerticalAlignment(JLabel.CENTER);
-//        hwk_panel1.add(hwk_label1, BorderLayout.CENTER);
-//
-//
-//        JPanel hwk_date_grid = new JPanel(new GridLayout(1, 5)); // 월~금 플래너수행도 날짜 5X1 그리드
-//        hwk_date_grid.setBounds(50, 0, 750, 25); // homework의 (50, 0)위치에 750X25 삽입
-//        hwk_date_grid.setBorder(border1);
-//
-//        for(int i=0;i<5;i++){
-//            JLabel hwk_date1_label = new JLabel(printList.get(i).getDate());
-//            hwk_date1_label.setFont(font3);
-//            hwk_date1_label.setHorizontalAlignment(JLabel.CENTER);
-//            hwk_date1_label.setVerticalAlignment(JLabel.CENTER);
-//
-//            JPanel hwk_panel2_1 = new JPanel(new BorderLayout());
-//            hwk_panel2_1.setBorder(border1);
-//            hwk_panel2_1.setBackground(light_red_color);
-//            hwk_panel2_1.add(hwk_date1_label, BorderLayout.CENTER);
-//
-//            hwk_date_grid.add(hwk_panel2_1);
-//        }
-//
-//
-//        // 월~금 과제 칸
-//        JPanel hwk_state_grid = new JPanel(new GridLayout(1, 5)); // 월~금 과제 5X1 그리드
-//        hwk_state_grid.setBounds(50, 25, 750, 65); // homework의 (50, 25)위치에 750X65 삽입
-//        hwk_state_grid.setBorder(border1);
-//
-//        for(int i=0;i<5;i++){
-//
-////            //과제 란이 작기 때문에 자동 줄바꿈 처리가 되는 JTextPane사용
-//            JTextPane tpName = new JTextPane();
-//            tpName.setEditable(false);
-//            tpName.setBackground(light_gray_color);
-//            tpName.setText(printList.get(i).getAssignment_comment());
-//
-//            //tpName의 styleDocument를 가져와 가운데 정렬 설정
-//            StyledDocument doc = tpName.getStyledDocument();
-//            SimpleAttributeSet ce = new SimpleAttributeSet();
-//            StyleConstants.setAlignment(ce, StyleConstants.ALIGN_CENTER);
-//            doc.setParagraphAttributes(0, doc.getLength(), ce, false);
-//            hwk_state_grid.add(tpName);
-//        }
-//
-//
-//        JPanel hwk_panel7 = new JPanel();
-//        hwk_panel7.setBounds(800, 0, 500, 90); // planner의 (800, 0)위치에 500X90 삽입
-//        hwk_panel7.setBorder(border1);
-//
-//
-//        homework.add(hwk_panel1);
-//        homework.add(hwk_date_grid);
-//        homework.add(hwk_state_grid);
-//        homework.add(hwk_panel7);
-//
-//
 
         // <TEST 란>
         JPanel test = new JPanel();
@@ -768,7 +705,7 @@ public class VacationWeekTable extends JFrame{
 
         // 수업집중도~TEST란 이 들어갈 패널 (크기 지정하는 데에 있어서 반복적인 잡업을 줄이기 위해)
         JPanel center_grid = new JPanel(new GridLayout(4, 1));
-        center_grid.setBounds(0, 440, 1300, 360); // center의 0, 350위치(패널의 왼쪽 위 좌표)에 1300X450의 패널
+        center_grid.setBounds(0, 440, 1300, 360); // center의 0, 440위치(패널의 왼쪽 위 좌표)에 1300X360의 패널
         center_grid.setBorder(border2);
 
         center_grid.add(concentration);
@@ -795,8 +732,11 @@ public class VacationWeekTable extends JFrame{
 
 
 
+
+
+
         // Create test file
-        File test1 = new File(saveFilePath + sName + " " +userMonth+"월 "+userWeek+"주차"+".png");
+        File saveFile = new File(saveFilePath + sName + " " +userMonth+"월 "+userWeek+"주차 주간관리표"+".png");
 
 
         // Use the ImageIO API to write the bufferedImage to a temporary file
@@ -806,7 +746,7 @@ public class VacationWeekTable extends JFrame{
             c.printAll(g2d);
 
             g2d.dispose();
-            ImageIO.write(im, "png", test1);
+            ImageIO.write(im, "png", saveFile);
         } catch (IOException e) {
             e.printStackTrace();
         }

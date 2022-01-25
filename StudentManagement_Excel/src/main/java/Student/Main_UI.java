@@ -1,5 +1,3 @@
-
-
 package Student;
 
 import javax.swing.*;
@@ -13,7 +11,9 @@ public class Main_UI extends JFrame {
     public static String userWeek;
     public static String loadedExcelPath;
     public static String loadedExcelName;
-
+    public static String saveExcelPath;
+    public static JLabel loadedExcelNameLabel = new JLabel();
+    public static JLabel saveExcelPathLabel = new JLabel();
 
     //<editor-fold desc="get, set 기능">
     public void setUserMonth(String userMonth) {
@@ -40,6 +40,13 @@ public class Main_UI extends JFrame {
     public String getLoadedExcelName() {
         return this.loadedExcelName;
     }
+    public void setSaveExcelPath(String saveExcelPath) {
+        this.saveExcelPath = saveExcelPath;
+    }
+    public String getSaveExcelPath() {
+        return this.saveExcelPath;
+    }
+
 
     //</editor-fold>
 
@@ -54,18 +61,41 @@ public class Main_UI extends JFrame {
         // 몇월 몇주차 선택
         String[] monthList = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"};
         JComboBox<String> monthes_combo = new JComboBox<String>(monthList);
-        monthes_combo.setSelectedIndex(5);
+        monthes_combo.setSelectedIndex(0);
         monthes_combo.addActionListener(new monthes_combo_ActionListener(this));
 
         String[] weekList = {"1","2","3","4","5","6"};
         JComboBox<String> weeks_combo = new JComboBox<String>(weekList);
+        weeks_combo.setSelectedIndex(0);
         weeks_combo.addActionListener(new weeks_combo_ActionListener(this));
+
+        JPanel select_month_panel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        select_month_panel.add(new JLabel("월을 선택하세요"));
+        select_month_panel.add(monthes_combo);
+
+        JPanel select_week_panel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        select_week_panel.add(new JLabel("주차를 선택하세요"));
+        select_week_panel.add(weeks_combo);
 
 
         // 엑셀 불러오기 버튼
         JButton loadExcelButton = new JButton("엑셀 불러오기");
         loadExcelButton.addActionListener(new loadExcel_ActionListener(this));
 
+        // 엑셀 불러오기 패널
+        JPanel loadExcelPanel = new JPanel(new GridLayout(2, 1));
+        loadExcelPanel.add(loadExcelButton);
+        loadExcelPanel.add(loadedExcelNameLabel); // 불러온 엑셀 파일명 보여주는 Label
+
+
+        // 저장 경로 선택 버튼
+        JButton saveExcelButton = new JButton("저장 위치 설정");
+        saveExcelButton.addActionListener(new saveExcel_ActionListener(this));
+
+        // 저장 경로 설정 패널
+        JPanel saveExcelPanel = new JPanel(new GridLayout(2, 1));
+        saveExcelPanel.add(saveExcelButton);
+        saveExcelPanel.add(saveExcelPathLabel); // 선택한 저장 경로 보여주는 Label
 
 
         // 캡처 버튼 4개, 버튼 액션리스너 생성
@@ -76,16 +106,16 @@ public class Main_UI extends JFrame {
 
         // filedialog의 parent를 지정해주기 위해 ActionListener에 this(main_ui)를 보내준다.
         semester_weektable_capture_btn.addActionListener(new semester_ActionListener(this));
-        //semester_clinic_weektabel_catture_btn.addActionListener(new semester_clinic_ActionListener(this));
+        semester_clinic_weektabel_catture_btn.addActionListener(new semester_Clinic_ActionListener(this));
         vacation_weektable_capture_btn.addActionListener(new vacation_ActionListener(this));
-        //vacation_clinic_weektable_capture_btn.addActionListener(new vacation_clinic_ActionListener(this));
+        vacation_clinic_weektable_capture_btn.addActionListener(new vacation_Clinic_ActionListener(this));
 
 
 
-        c.add(monthes_combo);
-        c.add(weeks_combo);
-        c.add(loadExcelButton);
-        c.add(new JPanel()); // 칸 맞추기 용
+        c.add(select_month_panel);
+        c.add(select_week_panel);
+        c.add(loadExcelPanel);
+        c.add(saveExcelPanel);
         c.add(semester_weektable_capture_btn);
         c.add(semester_clinic_weektabel_catture_btn);
         c.add(vacation_weektable_capture_btn);
@@ -93,7 +123,7 @@ public class Main_UI extends JFrame {
 
 
         setVisible(true);
-        setSize(600, 300);
+        setSize(1000, 300);
 
     }
 
@@ -123,7 +153,7 @@ public class Main_UI extends JFrame {
         }
     }
 
-    // 집중반 버튼 액션 리스너
+    // 집중반 주간관리표 버튼 액션 리스너
     class vacation_ActionListener implements ActionListener {
         private Main_UI main_ui;
         public vacation_ActionListener(Main_UI main_ui) {
@@ -132,39 +162,52 @@ public class Main_UI extends JFrame {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            System.out.println("저장 경로를 설정 중입니다...");
-
-            FileDialog saveFileDialog = new FileDialog(main_ui, "저장 위치 설정", FileDialog.SAVE);
-            saveFileDialog.setVisible(true);
-            saveFileDialog.setSize(300, 200);
-
-
-            //선택한 엑셀 파일의 Directory와 Filename를 받아서 읽어보자
-            System.out.println("저장 경로 : "+saveFileDialog.getDirectory());
-            System.out.println("저장할 파일 이름 : " + saveFileDialog.getFile());
-
-
-            // 엑셀 읽기 성공
-
             String loadFilePath = main_ui.getLoadedExcelPath();
             String loadFileName = main_ui.getLoadedExcelName();
-            String saveFilePath = saveFileDialog.getDirectory();
+            String saveFilePath = main_ui.getSaveExcelPath();
             String userWeek = main_ui.getUserWeek();
             String userMonth = main_ui.getUserMonth();
 
-            //읽은 엑셀파일을 가지고 학생별 주간 관리표 캡쳐
-            ReadExcel re = new ReadExcel(loadFilePath, loadFileName, saveFilePath, userMonth, userWeek); // filePath, fileName의 userWeek주차 주간관리표 캡처
+            // 읽은 엑셀파일을 가지고 학생별 주간 관리표 캡쳐
+            ReadSheet re = new ReadSheet(loadFilePath, loadFileName, saveFilePath, userMonth, userWeek); // filePath, fileName의 userWeek주차 주간관리표 캡처
 
-            //userMonth, userWeek 주차 캡쳐 진행
+            // userMonth, userWeek 주차 캡쳐 진행
             System.out.println("파일을 저장 중입니다...");
-            for (String name : re.nameList){
+            for (String name : re.nameList) {
                 new VacationWeekTable(re.studentList, name, userMonth, userWeek, saveFilePath);
             }
             System.out.println("모든 파일을 저장했습니다!");
         }
     }
 
-    // 정규반 버튼 액션 리스너
+    // 집중반 클리닉 주간관리표 액션 리스너
+    class vacation_Clinic_ActionListener implements  ActionListener {
+        private Main_UI main_ui;
+        public vacation_Clinic_ActionListener(Main_UI main_ui) {
+            this.main_ui = main_ui;
+        }
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            String loadFilePath = main_ui.getLoadedExcelPath();
+            String loadFileName = main_ui.getLoadedExcelName();
+            String saveFilePath = main_ui.getSaveExcelPath();
+            String userWeek = main_ui.getUserWeek();
+            String userMonth = main_ui.getUserMonth();
+
+            // 선택한 엑셀 파일의 학습관리표2 시트 읽기
+            ReadClinicSheet re = new ReadClinicSheet(loadFilePath, loadFileName, saveFilePath, userMonth, userWeek); // filePath, fileName의 userWeek주차 주간관리표 캡처
+
+            //userMonth, userWeek 주차 캡쳐 진행
+            System.out.println("파일을 저장 중입니다...");
+            for (String name : re.nameList){
+                new VacationClinicWeekTable(re.studentList, name, userMonth, userWeek, saveFilePath);
+            }
+            System.out.println("모든 파일을 저장했습니다!");
+        }
+    }
+
+    // 정규반 주간관리표 버튼 액션 리스너
     class semester_ActionListener implements ActionListener {
         private Main_UI main_ui;
         public semester_ActionListener(Main_UI main_ui) {
@@ -173,37 +216,54 @@ public class Main_UI extends JFrame {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            System.out.println("저장 경로를 설정 중입니다...");
-
-            FileDialog saveFileDialog = new FileDialog(main_ui, "저장 위치 설정", FileDialog.SAVE);
-            saveFileDialog.setVisible(true);
-            saveFileDialog.setSize(300, 200);
-
-
-            //선택한 엑셀 파일의 Directory와 Filename를 받아서 읽어보자
-            System.out.println("저장 경로 : "+saveFileDialog.getDirectory());
-            System.out.println("저장할 파일 이름 : " + saveFileDialog.getFile());
-
-
-            // 엑셀 읽기 성공
-
             String loadFilePath = main_ui.getLoadedExcelPath();
             String loadFileName = main_ui.getLoadedExcelName();
-            String saveFilePath = saveFileDialog.getDirectory();
+            String saveFilePath = main_ui.getSaveExcelPath();
             String userWeek = main_ui.getUserWeek();
             String userMonth = main_ui.getUserMonth();
 
             //읽은 엑셀파일로 데이터 만들기
-            ReadExcel re = new ReadExcel(loadFilePath, loadFileName, saveFilePath, userMonth, userWeek); // filePath, fileName의 userWeek주차 주간관리표 캡처
+            ReadSheet re = new ReadSheet(loadFilePath, loadFileName, saveFilePath, userMonth, userWeek); // filePath, fileName의 userWeek주차 주간관리표 캡처
+
+
+            System.out.println(re.getNameList());
+
 
             //userMonth, userWeek 주차 캡쳐 진행
             System.out.println("파일을 저장 중입니다...");
             for (String name : re.nameList){
-                new WeekTable(re.studentList, name, userMonth, userWeek, saveFilePath);
+                new SemesterWeekTable(re.studentList, name, userMonth, userWeek, saveFilePath);
             }
             System.out.println("모든 파일을 저장했습니다!");
         }
     }
+
+    // 정규반 클리닉 주간관리표 액션 리스너
+    class semester_Clinic_ActionListener implements ActionListener {
+        private Main_UI main_ui;
+        public semester_Clinic_ActionListener(Main_UI main_ui) {
+            this.main_ui = main_ui;
+        }
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            String loadFilePath = main_ui.getLoadedExcelPath();
+            String loadFileName = main_ui.getLoadedExcelName();
+            String saveFilePath = main_ui.getSaveExcelPath();
+            String userWeek = main_ui.getUserWeek();
+            String userMonth = main_ui.getUserMonth();
+
+            // 선택한 엑셀 파일의 학습관리표2 시트 읽기
+            ReadClinicSheet re = new ReadClinicSheet(loadFilePath, loadFileName, saveFilePath, userMonth, userWeek); // filePath, fileName의 userWeek주차 주간관리표 캡처
+
+            //userMonth, userWeek 주차 캡쳐 진행
+            System.out.println("파일을 저장 중입니다...");
+            for (String name : re.nameList){
+                new SemesterClinicWeekTable(re.studentList, name, userMonth, userWeek, saveFilePath);
+            }
+            System.out.println("모든 파일을 저장했습니다!");
+        }
+    }
+
 
     // 엑셀 불러오기 버튼 액션 리스너
     class loadExcel_ActionListener implements ActionListener {
@@ -211,7 +271,6 @@ public class Main_UI extends JFrame {
         loadExcel_ActionListener(Main_UI main_ui) {
             this.main_ui = main_ui;
         }
-
         @Override
         public void actionPerformed(ActionEvent e) {
             System.out.println("엑셀을 불러오는 중입니다...");
@@ -222,13 +281,34 @@ public class Main_UI extends JFrame {
 
             main_ui.setLoadedExcelPath(loadFileDialog.getDirectory());
             main_ui.setLoadedExcelName(loadFileDialog.getFile());
+            main_ui.loadedExcelNameLabel.setText(loadFileDialog.getFile());
 
             System.out.println("엑셀을 성공적으로 불러왔습니다!");
         }
     }
 
+    // 엑셀 저장 경로 버튼 액션 리스너
+    class saveExcel_ActionListener implements ActionListener {
+        private Main_UI main_ui;
+        public saveExcel_ActionListener(Main_UI main_ui) {
+            this.main_ui = main_ui;
+        }
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            System.out.println("저장 경로를 설정 중입니다...");
+
+            FileDialog saveFileDialog = new FileDialog(main_ui, "저장 위치 설정", FileDialog.SAVE);
+            saveFileDialog.setVisible(true);
+            saveFileDialog.setSize(300, 200);
+
+            main_ui.setSaveExcelPath(saveFileDialog.getDirectory());
+            main_ui.saveExcelPathLabel.setText(saveFileDialog.getDirectory());
+
+            System.out.println("저장 경로를 성공적으로 설정했습니다!");
+        }
+    }
+
     public static void main(String[] args) {
         Main_UI main_ui = new Main_UI();
-
     }
 }

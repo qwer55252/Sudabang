@@ -4,24 +4,21 @@ package Student;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
-import javax.swing.text.SimpleAttributeSet;
-import javax.swing.text.StyleConstants;
-import javax.swing.text.StyledDocument;
 import java.awt.*;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.rmi.StubNotFoundException;
 import java.util.ArrayList;
 
 
-public class WeekTable extends JFrame {
+public class SemesterWeekTable extends JFrame {
     // JFrame 에 swing을 붙이는게 좋을까?
     // JFrmae 위에 JPanel에 swing을 붙이는게 좋을까?
 
-    public WeekTable(ArrayList<StudentData> sList, String sName, String userMonth, String userWeek, String saveFilePath) {
-        int k = 0; //k는 몇 번째 학생인지 -> 테스트용
+    public SemesterWeekTable(ArrayList<StudentData> sList, String sName, String userMonth, String userWeek, String saveFilePath) {
+
+        //int k = 0; //k는 몇 번째 학생인지 -> 테스트용
         ArrayList<StudentData> printList = new ArrayList<StudentData>(); //출력할 학생의 정보들
         for (StudentData studentData : sList) { // 주간관리표 한 줄에 대하여
             if (studentData.getName().equals(sName) && (studentData.getMonth().equals(userMonth) && studentData.getWeek().equals(userWeek))){
@@ -90,10 +87,10 @@ public class WeekTable extends JFrame {
 
         //------------------------------------------------------------
         // <출석 란>
-        JPanel attendence = new JPanel(); // 1X4 패널
-        attendence.setLayout(null);
-        attendence.setBorder(border2);
-        attendence.setBounds(0, 0, 840, 90);
+        JPanel attendance = new JPanel(); // 1X4 패널
+        attendance.setLayout(null);
+        attendance.setBorder(border2);
+        attendance.setBounds(0, 0, 840, 90);
 
         JPanel att_panel1 = new JPanel(new BorderLayout()); // default : FlowLayout -> 맨 위에 가운데에 설정
         att_panel1.setBounds(0, 0, 90, 90);
@@ -190,11 +187,11 @@ public class WeekTable extends JFrame {
         att_panel4.add(new JLabel(" 퇴원 처리 됩니다."));
 
 
-        attendence.add(att_panel1);
-        attendence.add(att_panel2);
-        attendence.add(att_panel3);
-        attendence.add(att_panel4);
-        attendence.setBackground(Color.blue);
+        attendance.add(att_panel1);
+        attendance.add(att_panel2);
+        attendance.add(att_panel3);
+        attendance.add(att_panel4);
+        attendance.setBackground(Color.blue);
 
 
         //------------------------------------------------------------
@@ -919,7 +916,7 @@ public class WeekTable extends JFrame {
         c.add(center, BorderLayout.CENTER);
         c.add(east_panel, BorderLayout.EAST);
         c.add(west_panel, BorderLayout.WEST);
-        center.add(attendence);
+        center.add(attendance);
         center.add(progress);
         center.add(concentration);
         center.add(homework_state);
@@ -929,11 +926,11 @@ public class WeekTable extends JFrame {
 
         setSize(880, 900);
         setVisible(true);
-//        dispose();
+        dispose();
 
 
         // Create test file
-        File test1 = new File(saveFilePath + sName + " " +userMonth+"월 "+userWeek+"주차"+".png");
+        File test1 = new File(saveFilePath + sName + " " +userMonth+"월 "+userWeek+"주차 주간관리표"+".png");
 
         // Use the ImageIO API to write the bufferedImage to a temporary file
         try {
@@ -949,4 +946,3 @@ public class WeekTable extends JFrame {
 
     }
 }
-
