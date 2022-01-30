@@ -56,7 +56,7 @@ public class Main_UI extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         Container c = getContentPane();
-        c.setLayout(new GridLayout(4, 2));
+        c.setLayout(new GridLayout(6, 2));
 
         // 몇월 몇주차 선택
         String[] monthList = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"};
@@ -98,19 +98,21 @@ public class Main_UI extends JFrame {
         saveExcelPanel.add(saveExcelPathLabel); // 선택한 저장 경로 보여주는 Label
 
 
-        // 캡처 버튼 4개, 버튼 액션리스너 생성
+        // 캡처 버튼 6개, 버튼 액션리스너 생성
         JButton semester_weektable_capture_btn = new JButton("정규반 주간관리표 캡처하기");
         JButton semester_clinic_weektabel_catture_btn = new JButton("정규반 클리닉 주간관리표 캡처하기");
         JButton vacation_weektable_capture_btn = new JButton("집중반 주간관리표 캡처하기");
         JButton vacation_clinic_weektable_capture_btn = new JButton("집중반 클리닉 주간관리표 캡처하기");
+        JButton semester_monthtable_capture_btn = new JButton("정규반 월간관리표 캡처하기");
+        JButton vacation_monthtable_capture_btn = new JButton("집중반 월간관리표 캡처하기");
 
         // filedialog의 parent를 지정해주기 위해 ActionListener에 this(main_ui)를 보내준다.
         semester_weektable_capture_btn.addActionListener(new semester_ActionListener(this));
         semester_clinic_weektabel_catture_btn.addActionListener(new semester_Clinic_ActionListener(this));
         vacation_weektable_capture_btn.addActionListener(new vacation_ActionListener(this));
         vacation_clinic_weektable_capture_btn.addActionListener(new vacation_Clinic_ActionListener(this));
-
-
+        semester_monthtable_capture_btn.addActionListener(new semester_month_ActionListener(this));
+        vacation_monthtable_capture_btn.addActionListener(new vacation_month_ActionListener(this));
 
         c.add(select_month_panel);
         c.add(select_week_panel);
@@ -120,6 +122,8 @@ public class Main_UI extends JFrame {
         c.add(semester_clinic_weektabel_catture_btn);
         c.add(vacation_weektable_capture_btn);
         c.add(vacation_clinic_weektable_capture_btn);
+        c.add(semester_monthtable_capture_btn);
+        c.add(vacation_monthtable_capture_btn);
 
 
         setVisible(true);
@@ -225,7 +229,6 @@ public class Main_UI extends JFrame {
             //읽은 엑셀파일로 데이터 만들기
             ReadSheet re = new ReadSheet(loadFilePath, loadFileName, saveFilePath, userMonth, userWeek); // filePath, fileName의 userWeek주차 주간관리표 캡처
 
-
             System.out.println(re.getNameList());
 
 
@@ -259,6 +262,68 @@ public class Main_UI extends JFrame {
             System.out.println("파일을 저장 중입니다...");
             for (String name : re.nameList){
                 new SemesterClinicWeekTable(re.studentList, name, userMonth, userWeek, saveFilePath);
+            }
+            System.out.println("모든 파일을 저장했습니다!");
+        }
+    }
+
+    // 정규반 월간관리표 버튼 액션 리스너
+    class semester_month_ActionListener implements ActionListener {
+        private Main_UI main_ui;
+        public semester_month_ActionListener(Main_UI main_ui) {
+            this.main_ui = main_ui;
+        }
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            String loadFilePath = main_ui.getLoadedExcelPath();
+            String loadFileName = main_ui.getLoadedExcelName();
+            String saveFilePath = main_ui.getSaveExcelPath();
+            String userWeek = main_ui.getUserWeek();
+            String userMonth = main_ui.getUserMonth();
+
+            //읽은 엑셀파일로 데이터 만들기
+            ReadSheet sheet0 = new ReadSheet(loadFilePath, loadFileName, saveFilePath, userMonth, userWeek); // filePath, fileName의 userWeek주차 주간관리표 캡처
+            ReadClinicSheet sheet3 = new ReadClinicSheet(loadFilePath, loadFileName, saveFilePath, userMonth, userWeek); // filePath, fileName의 userWeek주차 주간관리표 캡처
+            //ReadTeacherSheet sheet5 = new ~~
+            System.out.println(sheet0.nameList);
+            System.out.println(sheet3.nameList);
+            //System.out.println(sheet5.getNameList());
+
+
+            //userMonth, userWeek 주차 캡쳐 진행
+            System.out.println("파일을 저장 중입니다...");
+            for (String name : sheet0.nameList){
+                //new SemesterMonthTable(sheet0.studentList, sheet3.studentList, name, userMonth, saveFilePath);
+            }
+            System.out.println("모든 파일을 저장했습니다!");
+        }
+    }
+
+    // 집중반 월간관리표 버튼 액션 리스너
+    class vacation_month_ActionListener implements ActionListener {
+        private Main_UI main_ui;
+        public vacation_month_ActionListener(Main_UI main_ui) {
+            this.main_ui = main_ui;
+        }
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            String loadFilePath = main_ui.getLoadedExcelPath();
+            String loadFileName = main_ui.getLoadedExcelName();
+            String saveFilePath = main_ui.getSaveExcelPath();
+            String userWeek = main_ui.getUserWeek();
+            String userMonth = main_ui.getUserMonth();
+
+            // 읽은 엑셀파일을 가지고 학생별 주간 관리표 캡쳐
+            ReadSheet sheet0 = new ReadSheet(loadFilePath, loadFileName, saveFilePath, userMonth, userWeek); // filePath, fileName의 userWeek주차 주간관리표 캡처
+            ReadClinicSheet sheet3 = new ReadClinicSheet(loadFilePath, loadFileName, saveFilePath, userMonth, userWeek); // filePath, fileName의 userWeek주차 주간관리표 캡처
+            //ReadTeacherSheet sheet5 = new ~~
+
+            //userMonth, userWeek 주차 캡쳐 진행S
+            System.out.println("파일을 저장 중입니다...");
+            for (String name : sheet0.nameList){
+                //new SemesterMonthTable(sheet0.studentList, sheet3.studentList, name, userMonth, saveFilePath);
             }
             System.out.println("모든 파일을 저장했습니다!");
         }
