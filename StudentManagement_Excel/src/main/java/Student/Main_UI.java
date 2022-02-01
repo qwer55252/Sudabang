@@ -3,6 +3,7 @@ package Student;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.ArrayList;
 
 
 public class Main_UI extends JFrame {
@@ -53,6 +54,10 @@ public class Main_UI extends JFrame {
     public Main_UI() {
         setTitle("엑셀 캡처 프로그램");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        //초기화
+        userMonth = "1";
+        userWeek = "1";
 
         Container c = getContentPane();
         c.setLayout(new GridLayout(6, 2));
@@ -285,15 +290,33 @@ public class Main_UI extends JFrame {
             ReadSheet sheet0 = new ReadSheet(loadFilePath, loadFileName, saveFilePath, userMonth, userWeek); // filePath, fileName의 userWeek주차 주간관리표 캡처
             ReadClinicSheet sheet3 = new ReadClinicSheet(loadFilePath, loadFileName, saveFilePath, userMonth, userWeek); // filePath, fileName의 userWeek주차 주간관리표 캡처
             //ReadTeacherSheet sheet5 = new ~~
-            System.out.println(sheet0.nameList);
-            System.out.println(sheet3.nameList);
+
+
+            //이름 리스트(sheet0)
+            ArrayList<String> sheet0NameList = new ArrayList<String>();
+            for (StudentData s : sheet0.studentList) {
+                if ((s.getMonth().equals(userMonth)) && !sheet0NameList.contains(s.getName())) {
+                    sheet0NameList.add(s.getName());
+                }
+            }
+
+//            //이름 리스트(sheet3)
+            ArrayList<String> sheet3NameList = new ArrayList<String>();
+            for (StudentClinicData s : sheet3.studentList) {
+                if ((s.getMonth().equals(userMonth)) && !sheet3NameList.contains(s.getName())) {
+                    sheet3NameList.add(s.getName());
+                }
+            }
+
+            System.out.println(sheet0NameList);
+//            System.out.println(sheet3NameList);
             //System.out.println(sheet5.getNameList());
 
 
             //userMonth, userWeek 주차 캡쳐 진행
             System.out.println("파일을 저장 중입니다...");
-            for (String name : sheet0.nameList){
-                //new SemesterMonthTable(sheet0.studentList, sheet3.studentList, name, userMonth, saveFilePath);
+            for (String name : sheet0NameList){
+                new SemesterMonthTable(sheet0.studentList, sheet3.studentList ,name, userMonth, saveFilePath);
             }
             System.out.println("모든 파일을 저장했습니다!");
         }
