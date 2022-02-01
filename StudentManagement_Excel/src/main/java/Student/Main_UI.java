@@ -351,7 +351,6 @@ public class Main_UI extends JFrame {
         }
     }
 
-
     // 엑셀 불러오기 버튼 액션 리스너
     class loadExcel_ActionListener implements ActionListener {
         private Main_UI main_ui;
