@@ -3,6 +3,7 @@ package Student;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.File;
 import java.util.ArrayList;
 
 
@@ -182,7 +183,8 @@ public class Main_UI extends JFrame {
             // userMonth, userWeek 주차 캡쳐 진행
             System.out.println("파일을 저장 중입니다...");
             for (String name : re.nameList) {
-                new VacationWeekTable(re.studentList, name, userMonth, userWeek, saveFilePath);
+                String pathName = saveFilePath + name + " " + userMonth + "월 " + userWeek + "주차 주간관리표.png"; // 경로명 + 파일명
+                new CaptureJFrame(new VacationWeekTable(re.studentList, name, userMonth, userWeek), pathName);
             }
             System.out.println("모든 파일을 저장했습니다!");
         }
@@ -209,7 +211,8 @@ public class Main_UI extends JFrame {
             //userMonth, userWeek 주차 캡쳐 진행
             System.out.println("파일을 저장 중입니다...");
             for (String name : re.nameList){
-                new VacationClinicWeekTable(re.studentList, name, userMonth, userWeek, saveFilePath);
+                String pathName = saveFilePath + name + " " + userMonth + "월 " + userWeek + "주차 클리닉 주간관리표.png"; // 경로명 + 파일명
+                new CaptureJFrame(new VacationClinicWeekTable(re.studentList, name, userMonth, userWeek), pathName);
             }
             System.out.println("모든 파일을 저장했습니다!");
         }
@@ -239,7 +242,8 @@ public class Main_UI extends JFrame {
             //userMonth, userWeek 주차 캡쳐 진행
             System.out.println("파일을 저장 중입니다...");
             for (String name : re.nameList){
-                new SemesterWeekTable(re.studentList, name, userMonth, userWeek, saveFilePath);
+                String pathName = saveFilePath + name + " " + userMonth + "월 " + userWeek + "주차 주간관리표.png"; // 경로명 + 파일명
+                new CaptureJFrame(new SemesterWeekTable(re.studentList, name, userMonth, userWeek), pathName);
             }
             System.out.println("모든 파일을 저장했습니다!");
         }
@@ -265,7 +269,8 @@ public class Main_UI extends JFrame {
             //userMonth, userWeek 주차 캡쳐 진행
             System.out.println("파일을 저장 중입니다...");
             for (String name : re.nameList){
-                new SemesterClinicWeekTable(re.studentList, name, userMonth, userWeek, saveFilePath);
+                String pathName = saveFilePath + name + " " + userMonth + "월 " + userWeek + "주차 클리닉 주간관리표.png"; // 경로명 + 파일명
+                new CaptureJFrame(new SemesterClinicWeekTable(re.studentList, name, userMonth, userWeek).getContentPane(), pathName);
             }
             System.out.println("모든 파일을 저장했습니다!");
         }
@@ -316,7 +321,8 @@ public class Main_UI extends JFrame {
             //userMonth, userWeek 주차 캡쳐 진행
             System.out.println("파일을 저장 중입니다...");
             for (String name : sheet0NameList){
-                new SemesterMonthTable(sheet0.studentList, sheet3.studentList ,name, userMonth, saveFilePath);
+                String pathName = saveFilePath + name + " " + userMonth + "월 월간 관리표.png"; // 경로명 + 파일명
+                new CaptureJFrame(new SemesterMonthTable(sheet0.studentList, sheet3.studentList ,name, userMonth).getContentPane(), pathName);
             }
             System.out.println("모든 파일을 저장했습니다!");
         }
@@ -345,7 +351,9 @@ public class Main_UI extends JFrame {
             //userMonth, userWeek 주차 캡쳐 진행S
             System.out.println("파일을 저장 중입니다...");
             for (String name : sheet0.nameList){
-                //new SemesterMonthTable(sheet0.studentList, sheet3.studentList, name, userMonth, saveFilePath);
+                String pathName = saveFilePath + name + " " + userMonth + "월 월간 관리표(1).png"; // 경로명 + 파일명
+                //new CaptureJFrame(new VacationMonthTable_1(sheet0.studentList, sheet3.studentList ,name, userMonth).getContentPane(), pathName);
+                //new CaptureJFrame(new VacationMonthTable_2(sheet0.studentList, sheet3.studentList ,name, userMonth).getContentPane(), pathName);
             }
             System.out.println("모든 파일을 저장했습니다!");
         }

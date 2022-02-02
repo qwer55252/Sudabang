@@ -13,9 +13,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class SemesterClinicWeekTable extends JFrame {
-    public static String saveFilePath;
-    public SemesterClinicWeekTable(ArrayList<StudentClinicData> sList, String sName, String userMonth, String userWeek, String saveFilePath) {
-        this.saveFilePath = saveFilePath;
+    public SemesterClinicWeekTable(ArrayList<StudentClinicData> sList, String sName, String userMonth, String userWeek) {
 
         ArrayList<StudentClinicData> printList = new ArrayList<StudentClinicData>(); //출력할 학생의 정보들
         for (StudentClinicData studentClinicData : sList) { // 주간관리표 한 줄에 대하여
@@ -369,23 +367,6 @@ public class SemesterClinicWeekTable extends JFrame {
         setVisible(true);
         dispose();
 
-
-
-        // Create test file
-        File saveFile = new File(saveFilePath + sName + " " +userMonth+"월 "+userWeek+"주차 클리닉 주간관리표.png");
-
-
-        // Use the ImageIO API to write the bufferedImage to a temporary file
-        try {
-            BufferedImage im = new BufferedImage(c.getWidth(), c.getHeight(), BufferedImage.TYPE_INT_ARGB);
-            Graphics2D g2d = im.createGraphics();
-            c.printAll(g2d);
-
-            g2d.dispose();
-            ImageIO.write(im, "png", saveFile);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
 }
