@@ -375,7 +375,7 @@ public class SemesterMonthTable extends javax.swing.JFrame {
         title_panel.setPreferredSize(new java.awt.Dimension(1400, 30));
         title_panel.setRequestFocusEnabled(false);
 
-        title_label.setFont(new java.awt.Font("Lucida Grande", Font.PLAIN, 16)); // NOI18N
+        title_label.setFont(new java.awt.Font("Dialog", Font.PLAIN, 16)); // NOI18N
         title_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         title_label.setText("<" +sName+ " 학생 "+ userMonth +"월 월간관리표>");
 
@@ -395,7 +395,7 @@ public class SemesterMonthTable extends javax.swing.JFrame {
         att_panel1.setBackground(new java.awt.Color(255, 255, 204));
 
         att_label.setBackground(new java.awt.Color(255, 255, 204));
-        att_label.setFont(new java.awt.Font("Lucida Grande", Font.BOLD, 15)); // NOI18N
+        att_label.setFont(new java.awt.Font("Dialog", Font.BOLD, 15)); // NOI18N
         att_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         att_label.setText("출석");
         att_label.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 2));
@@ -643,7 +643,7 @@ public class SemesterMonthTable extends javax.swing.JFrame {
 
         att_panel4_label3.setText("- 과제 3회 이상 미제출 시");
 
-        att_panel4_label4.setFont(new java.awt.Font("Lucida Grande", Font.PLAIN, 24)); // NOI18N
+        att_panel4_label4.setFont(new java.awt.Font("Dialog", Font.PLAIN, 24)); // NOI18N
         att_panel4_label4.setForeground(new java.awt.Color(255, 0, 0));
         att_panel4_label4.setText("퇴원처리");
 
@@ -687,7 +687,7 @@ public class SemesterMonthTable extends javax.swing.JFrame {
         test_panel1.setPreferredSize(new java.awt.Dimension(50, 176));
 
         test_panel1_label.setBackground(new java.awt.Color(204, 204, 255));
-        test_panel1_label.setFont(new java.awt.Font("Lucida Grande", Font.BOLD, 15)); // NOI18N
+        test_panel1_label.setFont(new java.awt.Font("Dialog", Font.BOLD, 15)); // NOI18N
         test_panel1_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         test_panel1_label.setText("TEST");
 
@@ -1078,9 +1078,9 @@ public class SemesterMonthTable extends javax.swing.JFrame {
         pln_panel1.setPreferredSize(new java.awt.Dimension(50, 176));
 
         pln_panel1_label.setBackground(new java.awt.Color(255, 255, 204));
-        pln_panel1_label.setFont(new java.awt.Font("Lucida Grande", Font.BOLD, 15)); // NOI18N
         pln_panel1_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         pln_panel1_label.setText("<html>플래너<br>수행도</html>");
+        pln_panel1_label.setFont(new java.awt.Font("Dialog", Font.BOLD, 15)); // NOI18N
         pln_panel1_label.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         pln_panel1_label.setPreferredSize(new java.awt.Dimension(50, 150));
 
@@ -1359,7 +1359,7 @@ public class SemesterMonthTable extends javax.swing.JFrame {
         con_panel1.setPreferredSize(new java.awt.Dimension(50, 176));
 
         con_panel1_label.setBackground(new java.awt.Color(255, 255, 204));
-        con_panel1_label.setFont(new java.awt.Font("Lucida Grande", Font.BOLD, 15)); // NOI18N
+        con_panel1_label.setFont(new java.awt.Font("Dialog", Font.BOLD, 15)); // NOI18N
         con_panel1_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         con_panel1_label.setText("<html>&nbsp수업<br>집중도</html>");
         con_panel1_label.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
@@ -1610,7 +1610,7 @@ public class SemesterMonthTable extends javax.swing.JFrame {
         hws_panel1.setPreferredSize(new java.awt.Dimension(50, 176));
 
         hws_panel1_label.setBackground(new java.awt.Color(255, 255, 204));
-        hws_panel1_label.setFont(new java.awt.Font("Lucida Grande", Font.BOLD, 15)); // NOI18N
+        hws_panel1_label.setFont(new java.awt.Font("Dialog", Font.BOLD, 15)); // NOI18N
         hws_panel1_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         hws_panel1_label.setText("<html>&nbsp과제<br>수행도</html>");
         hws_panel1_label.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 0));
@@ -1927,7 +1927,7 @@ public class SemesterMonthTable extends javax.swing.JFrame {
         pro_panel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         pro_panel1.setPreferredSize(new java.awt.Dimension(50, 340));
 
-        pro_panel1_label.setFont(new java.awt.Font("Lucida Grande", Font.BOLD, 15)); // NOI18N
+        pro_panel1_label.setFont(new java.awt.Font("Dialog", Font.BOLD, 15)); // NOI18N
         pro_panel1_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         pro_panel1_label.setText("진도");
 
@@ -2306,7 +2306,7 @@ public class SemesterMonthTable extends javax.swing.JFrame {
         hwk_panel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         hwk_panel1.setPreferredSize(new java.awt.Dimension(50, 340));
 
-        hwk_panel1_label.setFont(new java.awt.Font("Lucida Grande", Font.BOLD, 15)); // NOI18N
+        hwk_panel1_label.setFont(new java.awt.Font("Dialog", Font.BOLD, 15)); // NOI18N
         hwk_panel1_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         hwk_panel1_label.setText("과제");
 
@@ -2592,7 +2592,7 @@ public class SemesterMonthTable extends javax.swing.JFrame {
         cln_panel1.setBackground(new java.awt.Color(255, 204, 0));
         cln_panel1.setPreferredSize(new java.awt.Dimension(50, 180));
 
-        cln_panel1_label.setFont(new java.awt.Font("Lucida Grande", Font.BOLD, 15)); // NOI18N
+        cln_panel1_label.setFont(new java.awt.Font("Dialog", Font.BOLD, 15)); // NOI18N
         cln_panel1_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         cln_panel1_label.setText("<html>클<br>리<br>닉<br>보<br>고<br>서</html>");
 

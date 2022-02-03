@@ -343,17 +343,40 @@ public class Main_UI extends JFrame {
             String userWeek = main_ui.getUserWeek();
             String userMonth = main_ui.getUserMonth();
 
-            // 읽은 엑셀파일을 가지고 학생별 주간 관리표 캡쳐
+            //읽은 엑셀파일로 데이터 만들기
             ReadSheet sheet0 = new ReadSheet(loadFilePath, loadFileName, saveFilePath, userMonth, userWeek); // filePath, fileName의 userWeek주차 주간관리표 캡처
             ReadClinicSheet sheet3 = new ReadClinicSheet(loadFilePath, loadFileName, saveFilePath, userMonth, userWeek); // filePath, fileName의 userWeek주차 주간관리표 캡처
             //ReadTeacherSheet sheet5 = new ~~
 
-            //userMonth, userWeek 주차 캡쳐 진행S
+
+            //이름 리스트(sheet0)
+            ArrayList<String> sheet0NameList = new ArrayList<String>();
+            for (StudentData s : sheet0.studentList) {
+                if ((s.getMonth().equals(userMonth)) && !sheet0NameList.contains(s.getName())) {
+                    sheet0NameList.add(s.getName());
+                }
+            }
+
+//            //이름 리스트(sheet3)
+            ArrayList<String> sheet3NameList = new ArrayList<String>();
+            for (StudentClinicData s : sheet3.studentList) {
+                if ((s.getMonth().equals(userMonth)) && !sheet3NameList.contains(s.getName())) {
+                    sheet3NameList.add(s.getName());
+                }
+            }
+
+            System.out.println(sheet0NameList);
+//            System.out.println(sheet3NameList);
+            //System.out.println(sheet5.getNameList());
+
+
+            //userMonth, userWeek 주차 캡쳐 진행
             System.out.println("파일을 저장 중입니다...");
-            for (String name : sheet0.nameList){
-                String pathName = saveFilePath + name + " " + userMonth + "월 월간 관리표(1).png"; // 경로명 + 파일명
-                //new CaptureJFrame(new VacationMonthTable_1(sheet0.studentList, sheet3.studentList ,name, userMonth).getContentPane(), pathName);
-                //new CaptureJFrame(new VacationMonthTable_2(sheet0.studentList, sheet3.studentList ,name, userMonth).getContentPane(), pathName);
+            for (String name : sheet0NameList){
+                String pathName1 = saveFilePath + name + " " + userMonth + "월 월간 관리표(1).png"; // 경로명 + 파일명
+                String pathName2 = saveFilePath + name + " " + userMonth + "월 월간 관리표(2).png"; // 경로명 + 파일명
+                new CaptureJFrame(new VacationMonthTable_1(sheet0.studentList, sheet3.studentList ,name, userMonth).getContentPane(), pathName1);
+                new CaptureJFrame(new VacationMonthTable_2(sheet0.studentList, sheet3.studentList ,name, userMonth).getContentPane(), pathName2);
             }
             System.out.println("모든 파일을 저장했습니다!");
         }
