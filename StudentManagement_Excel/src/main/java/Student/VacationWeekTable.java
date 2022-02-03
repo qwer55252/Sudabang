@@ -18,10 +18,8 @@ import java.util.ArrayList;
 
 // 기능 : sName학생 userMonth월 userWeek주차 주간관리표 생성, 캡처 후 저장
 public class VacationWeekTable extends JFrame{
-    public static String saveFilePath;
-    public VacationWeekTable(ArrayList<StudentData> sList, String sName, String userMonth, String userWeek, String saveFilePath) {
-        this.saveFilePath = saveFilePath; // 저장 경로 지정
 
+    public VacationWeekTable(ArrayList<StudentData> sList, String sName, String userMonth, String userWeek) {
 //        int k = 0; //k는 몇 번째 학생인지 -> 테스트용
         ArrayList<StudentData> printList = new ArrayList<StudentData>(); //출력할 학생의 정보들
         for (StudentData studentData : sList) { // 주간관리표 한 줄에 대하여
@@ -731,24 +729,5 @@ public class VacationWeekTable extends JFrame{
 //        dispose();
 
 
-
-
-
-
-        // Create test file
-        File saveFile = new File(saveFilePath + sName + " " +userMonth+"월 "+userWeek+"주차 주간관리표"+".png");
-
-
-        // Use the ImageIO API to write the bufferedImage to a temporary file
-        try {
-            BufferedImage im = new BufferedImage(c.getWidth(), c.getHeight(), BufferedImage.TYPE_INT_ARGB);
-            Graphics2D g2d = im.createGraphics();
-            c.printAll(g2d);
-
-            g2d.dispose();
-            ImageIO.write(im, "png", saveFile);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 }

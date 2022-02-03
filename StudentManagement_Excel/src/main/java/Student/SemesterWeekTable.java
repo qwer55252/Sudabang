@@ -17,7 +17,7 @@ public class SemesterWeekTable extends JFrame {
     // JFrame 에 swing을 붙이는게 좋을까?
     // JFrmae 위에 JPanel에 swing을 붙이는게 좋을까?
 
-    public SemesterWeekTable(ArrayList<StudentData> sList, String sName, String userMonth, String userWeek, String saveFilePath) {
+    public SemesterWeekTable(ArrayList<StudentData> sList, String sName, String userMonth, String userWeek) {
 
         //int k = 0; //k는 몇 번째 학생인지 -> 테스트용
         ArrayList<StudentData> printList = new ArrayList<StudentData>(); //출력할 학생의 정보들
@@ -928,22 +928,6 @@ public class SemesterWeekTable extends JFrame {
         setSize(880, 900);
         setVisible(true);
         dispose();
-
-
-        // Create test file
-        File test1 = new File(saveFilePath + sName + " " +userMonth+"월 "+userWeek+"주차 주간관리표"+".png");
-
-        // Use the ImageIO API to write the bufferedImage to a temporary file
-        try {
-            BufferedImage im = new BufferedImage(c.getWidth(), c.getHeight(), BufferedImage.TYPE_INT_ARGB);
-            Graphics2D g2d = im.createGraphics();
-            c.printAll(g2d);
-
-            g2d.dispose();
-            ImageIO.write(im, "png", test1);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
 
     }
 }
