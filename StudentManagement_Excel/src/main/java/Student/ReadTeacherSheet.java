@@ -1,0 +1,149 @@
+package Student;
+
+import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.*;
+
+
+// 기능 : filePath/fileName 엑셀파일의 학습관리표를 읽어서 nameList와 studentList에 저장
+public class ReadTeacherSheet {
+    public static String loadFilePath;
+    public static String loadFileName;
+    public static String saveFilePath;
+    public static String userWeek;
+    public static String userMonth;
+    public String teacherComment;
+
+    public String getTecherComment() {
+        return teacherComment;
+    }
+
+    //Row가 비었는지 확인하는 메서드
+    public static boolean isRowEmpty(Row row) {
+        int c = row.getFirstCellNum();
+        Cell cell = row.getCell(c);
+        if (cell != null && cell.getCellType() != CellType.BLANK) {
+            return false;
+        }
+        return true;
+    }
+
+
+    public ReadTeacherSheet(String loadFilePath, String loadFileName, String saveFilePath) {
+        this.loadFilePath = loadFilePath;
+        this.loadFileName = loadFileName;
+        this.saveFilePath = saveFilePath;
+
+
+        try {
+            FileInputStream file = new FileInputStream(new File(loadFilePath, loadFileName));
+
+            // 엑셀 파일로 Workbook instance를 생성한다.
+            XSSFWorkbook workbook = new XSSFWorkbook(file);
+
+            // workbook의 첫번째 sheet를 가저온다. -> 학습 관리표
+            XSSFSheet sheet = workbook.getSheetAt(5);
+
+            // 만약 특정 이름의 시트를 찾는다면 workbook.getSheet("찾는 시트의 이름");
+            // 만약 모든 시트를 순회하고 싶으면
+            // for(Integer sheetNum : workbook.getNumberOfSheets()) {
+            //      XSSFSheet sheet = workbook.getSheetAt(i);
+            // }
+            // 아니면 Iterator<Sheet> s = workbook.iterator() 를 사용해서 조회해도 좋다.
+
+            // 모든 행(row)들을 조회한다. -> 첫 번째 행은 무시(학생 이름)
+            int rowCnt = 0;
+            Iterator<Row> rowIterator = sheet.iterator();
+            ArrayList<StudentData> studentList = new ArrayList<>(); //전체 학생들 정보
+            while (rowIterator.hasNext()) {
+                Row row = rowIterator.next();
+                if(rowCnt==0||rowCnt==1){
+                    rowCnt++;
+                    continue;
+                }
+                if(isRowEmpty(row)) break; //빈 행이 나오면 정지 -> 실수로 빈 행이 나오는 경우엔 어떻게 해야할까?
+
+                // 각각의 행에 존재하는 모든 열(cell)을 순회한다.
+                Iterator<Cell> cellIterator = row.cellIterator();
+                StudentData s = new StudentData(); //학생 한 명의 정보를 저장할 객체 -> studentList에 넣어줄거임
+                int cellCnt = 0; //13번째 셀 까지만
+                while (cellIterator.hasNext() && cellCnt!=13) {
+                    Cell cell = cellIterator.next();
+                    if(cellCnt==0){ //순번 무시
+                        cellCnt++;
+                        continue;
+                    }
+                    String value = null; //저장할 값
+                    // cell의 타입을 확인 하고, 값을 가져온다.
+                    switch (cell.getCellType()) {
+                        case NUMERIC -> {
+                            System.out.println("Error : 선생님 소견에 숫자 형태가 들어있습니다.");
+                        }
+                        case STRING -> {
+                            value = cell.getStringCellValue();
+                            System.out.println("선생님 소견을 성공적으로 불러왔습니다!");
+                        }
+                        case FORMULA -> {
+                            System.out.println("Error : 선생님 소견에 서식 형태가 들어있습니다.");
+                        }
+                    }
+                    switch (cellCnt){ //switch문을 사용하면 if~if else보다는 좀 더 코드가 보기 좋아짐
+                        case 1 -> s.setDate(value);
+                        case 2 -> s.setName(value);
+                        case 3 -> s.setAttendance(value);
+                        case 4 -> s.setAssignment_performance(value);
+                        case 5 -> s.setPlanner_performance(value);
+                        case 6 -> s.setConcentration(value);
+                        case 7 -> s.setTest_score(value);
+                        case 8 -> s.setAssignment_comment(value);
+                        case 9 -> s.setTextbook(value);
+                        case 10 -> s.setProgress(value);
+                        case 11 -> s.setMonth(value);
+                        case 12 -> s.setWeek(value);
+                    }
+                    s.setWeek_num(s.getMonth()+"월 "+s.getWeek()+"주차");
+                    cellCnt++;
+                }
+                System.out.println();
+                //studentList에 한 명씩 추가
+                studentList.add(s);
+                rowCnt++;
+            }
+            System.out.println(rowCnt+"개의 학생 데이터를 저장했습니다!");
+            //출력할 학생들 이름 리스트를 만들어 준다.
+            ArrayList<String> nameList;
+
+            //이름 리스트
+            nameList = new ArrayList<String>();
+
+            for (StudentData s : studentList) {
+//                System.out.println("<" + s.getName() + ">");
+//                System.out.println("s.getWeek : " + s.getWeek() + "userWeek : " + userWeek);
+//                System.out.println("s.getMonth" + s.getMonth() + "userMonth : " + userMonth);
+//                System.out.println("!nameList.contains(s.getName()) : " + !nameList.contains(s.getName()));
+
+                if ((s.getWeek().equals(userWeek) && s.getMonth().equals(userMonth)) && !nameList.contains(s.getName())) {
+                    nameList.add(s.getName());
+                }
+            }
+
+            file.close();
+
+            //System.out.println("<nameList> : " + nameList);
+            //System.out.println("<studentList> : " + studentList);
+
+
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+}
