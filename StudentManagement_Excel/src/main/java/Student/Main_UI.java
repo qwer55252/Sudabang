@@ -178,7 +178,7 @@ public class Main_UI extends JFrame {
             String userMonth = main_ui.getUserMonth();
 
             // 읽은 엑셀파일을 가지고 학생별 주간 관리표 캡쳐
-            ReadSheet re = new ReadSheet(loadFilePath, loadFileName, saveFilePath, userMonth, userWeek); // filePath, fileName의 userWeek주차 주간관리표 캡처
+            ReadSheet re = new ReadSheet(loadFilePath, loadFileName); // filePath, fileName의 학습관리표(0번째 시트) 읽기
 
             // userMonth, userWeek 주차 캡쳐 진행
             System.out.println("파일을 저장 중입니다...");
@@ -206,7 +206,7 @@ public class Main_UI extends JFrame {
             String userMonth = main_ui.getUserMonth();
 
             // 선택한 엑셀 파일의 학습관리표2 시트 읽기
-            ReadClinicSheet re = new ReadClinicSheet(loadFilePath, loadFileName, saveFilePath, userMonth, userWeek); // filePath, fileName의 userWeek주차 주간관리표 캡처
+            ReadClinicSheet re = new ReadClinicSheet(loadFilePath, loadFileName, userMonth, userWeek); // filePath, fileName의 userWeek주차 주간관리표 캡처
 
             //userMonth, userWeek 주차 캡쳐 진행
             System.out.println("파일을 저장 중입니다...");
@@ -234,7 +234,7 @@ public class Main_UI extends JFrame {
             String userMonth = main_ui.getUserMonth();
 
             //읽은 엑셀파일로 데이터 만들기
-            ReadSheet re = new ReadSheet(loadFilePath, loadFileName, saveFilePath, userMonth, userWeek); // filePath, fileName의 userWeek주차 주간관리표 캡처
+            ReadSheet re = new ReadSheet(loadFilePath, loadFileName); // filePath, fileName의 학습관리표(0번째 시트) 읽기
 
             System.out.println(re.getNameList());
 
@@ -264,7 +264,7 @@ public class Main_UI extends JFrame {
             String userMonth = main_ui.getUserMonth();
 
             // 선택한 엑셀 파일의 학습관리표2 시트 읽기
-            ReadClinicSheet re = new ReadClinicSheet(loadFilePath, loadFileName, saveFilePath, userMonth, userWeek); // filePath, fileName의 userWeek주차 주간관리표 캡처
+            ReadClinicSheet re = new ReadClinicSheet(loadFilePath, loadFileName, userMonth, userWeek); // filePath, fileName의 userWeek주차 주간관리표 캡처
 
             //userMonth, userWeek 주차 캡쳐 진행
             System.out.println("파일을 저장 중입니다...");
@@ -291,10 +291,12 @@ public class Main_UI extends JFrame {
             String userWeek = main_ui.getUserWeek();
             String userMonth = main_ui.getUserMonth();
 
+
+
             //읽은 엑셀파일로 데이터 만들기
-            ReadSheet sheet0 = new ReadSheet(loadFilePath, loadFileName, saveFilePath, userMonth, userWeek); // filePath, fileName의 userWeek주차 주간관리표 캡처
-            ReadClinicSheet sheet3 = new ReadClinicSheet(loadFilePath, loadFileName, saveFilePath, userMonth, userWeek); // filePath, fileName의 userWeek주차 주간관리표 캡처
-            //ReadTeacherSheet sheet5 = new ~~
+            ReadSheet sheet0 = new ReadSheet(loadFilePath, loadFileName); // filePath, fileName의 학습관리표(0번째 시트) 읽기
+            ReadClinicSheet sheet3 = new ReadClinicSheet(loadFilePath, loadFileName, userMonth, userWeek); // filePath, fileName의 userWeek주차 주간관리표 캡처
+            ReadOpinionSheet sheet5 = new ReadOpinionSheet(loadFilePath, loadFileName);
 
 
             //이름 리스트(sheet0)
@@ -313,8 +315,8 @@ public class Main_UI extends JFrame {
                 }
             }
 
-            System.out.println(sheet0NameList);
-//            System.out.println(sheet3NameList);
+            //System.out.println(sheet0NameList);
+            //System.out.println(sheet3NameList);
             //System.out.println(sheet5.getNameList());
 
 
@@ -322,7 +324,7 @@ public class Main_UI extends JFrame {
             System.out.println("파일을 저장 중입니다...");
             for (String name : sheet0NameList){
                 String pathName = saveFilePath + name + " " + userMonth + "월 월간 관리표.png"; // 경로명 + 파일명
-                new CaptureJFrame(new SemesterMonthTable(sheet0.studentList, sheet3.studentList ,name, userMonth).getContentPane(), pathName);
+                new CaptureJFrame(new SemesterMonthTable(sheet0.studentList, sheet3.studentList, sheet5.studentList, name, userMonth).getContentPane(), pathName);
             }
             System.out.println("모든 파일을 저장했습니다!");
         }
@@ -344,9 +346,9 @@ public class Main_UI extends JFrame {
             String userMonth = main_ui.getUserMonth();
 
             //읽은 엑셀파일로 데이터 만들기
-            ReadSheet sheet0 = new ReadSheet(loadFilePath, loadFileName, saveFilePath, userMonth, userWeek); // filePath, fileName의 userWeek주차 주간관리표 캡처
-            ReadClinicSheet sheet3 = new ReadClinicSheet(loadFilePath, loadFileName, saveFilePath, userMonth, userWeek); // filePath, fileName의 userWeek주차 주간관리표 캡처
-            //ReadTeacherSheet sheet5 = new ~~
+            ReadSheet sheet0 = new ReadSheet(loadFilePath, loadFileName); // filePath, fileName의 학습관리표(0번째 시트) 읽기
+            ReadClinicSheet sheet3 = new ReadClinicSheet(loadFilePath, loadFileName, userMonth, userWeek); // filePath, fileName의 userWeek주차 주간관리표 캡처
+            ReadOpinionSheet sheet5 = new ReadOpinionSheet(loadFilePath, loadFileName); //
 
 
             //이름 리스트(sheet0)
@@ -357,7 +359,7 @@ public class Main_UI extends JFrame {
                 }
             }
 
-//            //이름 리스트(sheet3)
+            //이름 리스트(sheet3)
             ArrayList<String> sheet3NameList = new ArrayList<String>();
             for (StudentClinicData s : sheet3.studentList) {
                 if ((s.getMonth().equals(userMonth)) && !sheet3NameList.contains(s.getName())) {

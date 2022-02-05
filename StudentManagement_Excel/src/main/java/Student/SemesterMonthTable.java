@@ -27,8 +27,8 @@ public class SemesterMonthTable extends javax.swing.JFrame {
      * Creates new form SemesterMonthTable_netbeans
      */
 
-    public SemesterMonthTable(ArrayList<StudentData> sList, ArrayList<StudentClinicData> scList, String sName, String userMonth) {
-            initComponents(sList, scList, sName, userMonth);
+    public SemesterMonthTable(ArrayList<StudentData> sList, ArrayList<StudentClinicData> scList, ArrayList<StudentOpinionData> soList, String sName, String userMonth) {
+            initComponents(sList, scList, soList, sName, userMonth);
     }
 
     /**
@@ -39,7 +39,7 @@ public class SemesterMonthTable extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">
 
-    private void initComponents(ArrayList<StudentData> sList, ArrayList<StudentClinicData> scList, String sName, String userMonth) {
+    private void initComponents(ArrayList<StudentData> sList, ArrayList<StudentClinicData> scList, ArrayList<StudentOpinionData> soList, String sName, String userMonth) {
 
         //<editor-fold desc="변수 선언">
         title_panel = new javax.swing.JPanel();
@@ -316,16 +316,20 @@ public class SemesterMonthTable extends javax.swing.JFrame {
         teacher_opinion_panel = new javax.swing.JPanel();
         tch_opn_panel1 = new javax.swing.JPanel();
         tch_opn_panel1_label = new javax.swing.JLabel();
-        tch_opn_TextArea = new javax.swing.JTextPane();
+        tch_opn_panel2 = new javax.swing.JPanel();
+        tch_opn_panel2_label = new javax.swing.JLabel();
         //</editor-fold>
 
-        //수업 리스트 만들기
-        ArrayList<StudentData> printList = new ArrayList<StudentData>(); //출력할 학생의 정보들
-        for (StudentData studentData : sList) { // 주간관리표 한 줄에 대하여
+        //출력할 수업 리스트 만들기
+        ArrayList<StudentData> printList = new ArrayList<StudentData>(); //출력할 sName학생의 정보들
+        for (StudentData studentData : sList) { // 학습관리표 한 줄에 대하여
             if (studentData.getName().equals(sName) && (studentData.getMonth().equals(userMonth))){
                 printList.add(studentData);
             }
         }
+
+
+
         int printSize = printList.size();
         //부족한 수만큼 '-'데이터로 채운 학생 인스턴스 추가
         for(int i=0;i<10-printSize;i++){
@@ -418,79 +422,81 @@ public class SemesterMonthTable extends javax.swing.JFrame {
         );
 
         att_panel2.setBackground(new java.awt.Color(255, 255, 204));
+        att_panel2.setPreferredSize(new java.awt.Dimension(100, 176));
 
         att_panel2_label1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         att_panel2_label1.setText("날짜");
         att_panel2_label1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
-        att_panel2_label1.setPreferredSize(new java.awt.Dimension(50, 16));
+        att_panel2_label1.setPreferredSize(new java.awt.Dimension(100, 16));
 
 
 
         att_panel2_label2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         att_panel2_label2.setText(printList.get(0).getDate());
         att_panel2_label2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
-        att_panel2_label2.setPreferredSize(new java.awt.Dimension(50, 16));
+        att_panel2_label2.setPreferredSize(new java.awt.Dimension(100, 16));
 
         att_panel2_label3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         att_panel2_label3.setText(printList.get(1).getDate());
         att_panel2_label3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
-        att_panel2_label3.setPreferredSize(new java.awt.Dimension(50, 16));
+        att_panel2_label3.setPreferredSize(new java.awt.Dimension(100, 16));
 
         att_panel2_label4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         att_panel2_label4.setText(printList.get(2).getDate());
         att_panel2_label4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
-        att_panel2_label4.setPreferredSize(new java.awt.Dimension(50, 16));
+        att_panel2_label4.setPreferredSize(new java.awt.Dimension(100, 16));
 
         att_panel2_label5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         att_panel2_label5.setText(printList.get(3).getDate());
         att_panel2_label5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
-        att_panel2_label5.setPreferredSize(new java.awt.Dimension(50, 16));
+        att_panel2_label5.setPreferredSize(new java.awt.Dimension(100, 16));
 
         att_panel2_label6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         att_panel2_label6.setText(printList.get(4).getDate());
         att_panel2_label6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
-        att_panel2_label6.setPreferredSize(new java.awt.Dimension(50, 16));
+        att_panel2_label6.setPreferredSize(new java.awt.Dimension(100, 16));
 
         att_panel2_label7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         att_panel2_label7.setText(printList.get(5).getDate());
         att_panel2_label7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
-        att_panel2_label7.setPreferredSize(new java.awt.Dimension(50, 16));
+        att_panel2_label7.setPreferredSize(new java.awt.Dimension(100, 16));
 
         att_panel2_label8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         att_panel2_label8.setText(printList.get(6).getDate());
         att_panel2_label8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
-        att_panel2_label8.setPreferredSize(new java.awt.Dimension(50, 16));
+        att_panel2_label8.setPreferredSize(new java.awt.Dimension(100, 16));
 
         att_panel2_label9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         att_panel2_label9.setText(printList.get(7).getDate());
         att_panel2_label9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
-        att_panel2_label9.setPreferredSize(new java.awt.Dimension(50, 16));
+        att_panel2_label9.setPreferredSize(new java.awt.Dimension(100, 16));
 
         att_panel2_label10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         att_panel2_label10.setText(printList.get(8).getDate());
         att_panel2_label10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
-        att_panel2_label10.setPreferredSize(new java.awt.Dimension(50, 16));
+        att_panel2_label10.setPreferredSize(new java.awt.Dimension(100, 16));
 
         att_panel2_label11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         att_panel2_label11.setText(printList.get(9).getDate());
         att_panel2_label11.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
-        att_panel2_label11.setPreferredSize(new java.awt.Dimension(50, 16));
+        att_panel2_label11.setPreferredSize(new java.awt.Dimension(100, 16));
 
         javax.swing.GroupLayout att_panel2Layout = new javax.swing.GroupLayout(att_panel2);
         att_panel2.setLayout(att_panel2Layout);
         att_panel2Layout.setHorizontalGroup(
                 att_panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(att_panel2_label1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(att_panel2_label2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(att_panel2_label3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(att_panel2_label4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(att_panel2_label5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(att_panel2_label6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(att_panel2_label7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(att_panel2_label8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(att_panel2_label9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(att_panel2_label11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(att_panel2_label10, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(att_panel2_label1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(att_panel2_label2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(att_panel2_label3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(att_panel2_label4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(att_panel2_label5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(att_panel2_label6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(att_panel2_label7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(att_panel2_label8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(att_panel2_label9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(att_panel2_label10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(att_panel2_label11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+
         );
         att_panel2Layout.setVerticalGroup(
                 att_panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -515,7 +521,7 @@ public class SemesterMonthTable extends javax.swing.JFrame {
                                 .addGap(0, 0, 0)
                                 .addComponent(att_panel2_label10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, 0)
-                                .addComponent(att_panel2_label11, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(att_panel2_label11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
 
@@ -1355,10 +1361,11 @@ public class SemesterMonthTable extends javax.swing.JFrame {
                                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        con_panel1.setBackground(new java.awt.Color(255, 255, 204));
         con_panel1.setPreferredSize(new java.awt.Dimension(50, 176));
+        con_panel1.setBackground(new java.awt.Color(204, 229, 255));
 
-        con_panel1_label.setBackground(new java.awt.Color(255, 255, 204));
+
+        con_panel1_label.setBackground(new java.awt.Color(204, 229, 255));
         con_panel1_label.setFont(new java.awt.Font("Dialog", Font.BOLD, 15)); // NOI18N
         con_panel1_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         con_panel1_label.setText("<html>&nbsp수업<br>집중도</html>");
@@ -1376,7 +1383,7 @@ public class SemesterMonthTable extends javax.swing.JFrame {
                         .addComponent(con_panel1_label, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        con_panel2.setBackground(new java.awt.Color(255, 255, 204));
+        con_panel2.setBackground(new java.awt.Color(204, 229, 255));
         con_panel2.setPreferredSize(new java.awt.Dimension(100, 176));
 
         con_panel2_label1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -1485,7 +1492,7 @@ public class SemesterMonthTable extends javax.swing.JFrame {
                                 .addComponent(con_panel2_label11, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        con_panel3_1.setBackground(new java.awt.Color(255, 255, 204));
+        con_panel3_1.setBackground(new java.awt.Color(204, 229, 255));
         con_panel3_1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         con_panel3_1.setPreferredSize(new java.awt.Dimension(52, 16));
 
@@ -1609,7 +1616,7 @@ public class SemesterMonthTable extends javax.swing.JFrame {
         hws_panel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         hws_panel1.setPreferredSize(new java.awt.Dimension(50, 176));
 
-        hws_panel1_label.setBackground(new java.awt.Color(255, 255, 204));
+        hws_panel1_label.setBackground(new java.awt.Color(204, 255, 229));
         hws_panel1_label.setFont(new java.awt.Font("Dialog", Font.BOLD, 15)); // NOI18N
         hws_panel1_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         hws_panel1_label.setText("<html>&nbsp과제<br>수행도</html>");
@@ -1948,6 +1955,7 @@ public class SemesterMonthTable extends javax.swing.JFrame {
         pro_panel2.setPreferredSize(new java.awt.Dimension(100, 340));
 
         pro_panel2_1.setBackground(new java.awt.Color(204, 229, 255));
+        pro_panel2_1.setPreferredSize(new java.awt.Dimension(100, 20));
         pro_panel2_1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
 
         pro_panel2_1_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -2021,9 +2029,9 @@ public class SemesterMonthTable extends javax.swing.JFrame {
                         .addComponent(pro_panel2_label6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(pro_panel2_label7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(pro_panel2_label8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pro_panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(pro_panel2_label10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(pro_panel2_label9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(pro_panel2_label9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(pro_panel2_label10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+
         );
         pro_panel2Layout.setVerticalGroup(
                 pro_panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2051,15 +2059,15 @@ public class SemesterMonthTable extends javax.swing.JFrame {
                                 .addComponent(pro_panel2_label10, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        pro_panel3.setPreferredSize(new java.awt.Dimension(100, 340));
+        pro_panel3.setPreferredSize(new java.awt.Dimension(150, 340));
 
         pro_panel3_1.setBackground(new java.awt.Color(204, 229, 255));
-        pro_panel3_1.setPreferredSize(new java.awt.Dimension(100, 18));
+        pro_panel3_1.setPreferredSize(new java.awt.Dimension(150, 20));
         pro_panel3_1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
 
 
         pro_panel3_1_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        pro_panel3_1_label.setPreferredSize(new java.awt.Dimension(100, 16));
+        pro_panel3_1_label.setPreferredSize(new java.awt.Dimension(150, 18));
         pro_panel3_1_label.setText("교재");
 
 
@@ -2077,44 +2085,53 @@ public class SemesterMonthTable extends javax.swing.JFrame {
         );
 
         pro_panel3_label1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-
         pro_panel3_label1.setText(printList.get(0).getTextbook());
+        pro_panel3_label1.setPreferredSize(new java.awt.Dimension(150, 32));
         pro_panel3_label1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
 
         pro_panel3_label2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         pro_panel3_label2.setText(printList.get(1).getTextbook());
+        pro_panel3_label2.setPreferredSize(new java.awt.Dimension(150, 32));
         pro_panel3_label2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
 
         pro_panel3_label3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         pro_panel3_label3.setText(printList.get(2).getTextbook());
+        pro_panel3_label3.setPreferredSize(new java.awt.Dimension(150, 32));
         pro_panel3_label3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
 
         pro_panel3_label4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         pro_panel3_label4.setText(printList.get(3).getTextbook());
+        pro_panel3_label4.setPreferredSize(new java.awt.Dimension(150, 32));
         pro_panel3_label4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
 
         pro_panel3_label5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         pro_panel3_label5.setText(printList.get(4).getTextbook());
+        pro_panel3_label5.setPreferredSize(new java.awt.Dimension(150, 32));
         pro_panel3_label5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
 
         pro_panel3_label6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         pro_panel3_label6.setText(printList.get(5).getTextbook());
+        pro_panel3_label6.setPreferredSize(new java.awt.Dimension(150, 32));
         pro_panel3_label6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
 
         pro_panel3_label7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         pro_panel3_label7.setText(printList.get(6).getTextbook());
+        pro_panel3_label7.setPreferredSize(new java.awt.Dimension(150, 32));
         pro_panel3_label7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
 
         pro_panel3_label8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         pro_panel3_label8.setText(printList.get(7).getTextbook());
+        pro_panel3_label8.setPreferredSize(new java.awt.Dimension(150, 32));
         pro_panel3_label8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
 
         pro_panel3_label9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         pro_panel3_label9.setText(printList.get(8).getTextbook());
+        pro_panel3_label9.setPreferredSize(new java.awt.Dimension(150, 32));
         pro_panel3_label9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
 
         pro_panel3_label10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         pro_panel3_label10.setText(printList.get(9).getTextbook());
+        pro_panel3_label10.setPreferredSize(new java.awt.Dimension(150, 32));
         pro_panel3_label10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
 
         javax.swing.GroupLayout pro_panel3Layout = new javax.swing.GroupLayout(pro_panel3);
@@ -2122,16 +2139,16 @@ public class SemesterMonthTable extends javax.swing.JFrame {
         pro_panel3Layout.setHorizontalGroup(
                 pro_panel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(pro_panel3_1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(pro_panel3_label1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(pro_panel3_label2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(pro_panel3_label3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(pro_panel3_label4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(pro_panel3_label5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(pro_panel3_label6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(pro_panel3_label7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(pro_panel3_label8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(pro_panel3_label9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(pro_panel3_label10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(pro_panel3_label1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                        .addComponent(pro_panel3_label2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                        .addComponent(pro_panel3_label3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                        .addComponent(pro_panel3_label4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                        .addComponent(pro_panel3_label5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                        .addComponent(pro_panel3_label6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                        .addComponent(pro_panel3_label7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                        .addComponent(pro_panel3_label8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                        .addComponent(pro_panel3_label9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                        .addComponent(pro_panel3_label10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 
 
         );
@@ -2162,9 +2179,10 @@ public class SemesterMonthTable extends javax.swing.JFrame {
         );
 
         pro_panel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 0));
-        pro_panel4.setPreferredSize(new java.awt.Dimension(500, 340));
+        pro_panel4.setPreferredSize(new java.awt.Dimension(450, 340));
 
         pro_panel4_1.setBackground(new java.awt.Color(204, 229, 255));
+        pro_panel4_1.setPreferredSize(new java.awt.Dimension(450, 20));
         pro_panel4_1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
 
         pro_panel4_1_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -2183,67 +2201,67 @@ public class SemesterMonthTable extends javax.swing.JFrame {
                                 .addGap(0, 0, 0))
         );
 
-        pro_panel4_2.setPreferredSize(new java.awt.Dimension(300, 320));
+        pro_panel4_2.setPreferredSize(new java.awt.Dimension(450, 320));
 
 
         String[] tmp = printList.get(0).getProgress().split("\\n");
         if(tmp.length>=3) pro_panel4_2_label1.setFont(new java.awt.Font("Dialog", Font.PLAIN, 8)); // 글자 크기 변경
         pro_panel4_2_label1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        pro_panel4_2_label1.setText("<html><p style=\"width:450\">"+printList.get(0).getProgress().replace("\n","<br>")+"</p></html>");
+        pro_panel4_2_label1.setText("<html><p style=\"width:400\">"+printList.get(0).getProgress().replace("\n","<br>")+"</p></html>");
         pro_panel4_2_label1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
 
         tmp = printList.get(1).getProgress().split("\\n");
         if(tmp.length>=3) pro_panel4_2_label2.setFont(new java.awt.Font("Dialog", Font.PLAIN, 8)); // 글자 크기 변경
         pro_panel4_2_label2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        pro_panel4_2_label2.setText("<html><p style=\"width:450\">"+printList.get(1).getProgress().replace("\n","<br>")+"</p></html>");
+        pro_panel4_2_label2.setText("<html><p style=\"width:400\">"+printList.get(1).getProgress().replace("\n","<br>")+"</p></html>");
         pro_panel4_2_label2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
 
         tmp = printList.get(2).getProgress().split("\\n");
         if(tmp.length>=3) pro_panel4_2_label3.setFont(new java.awt.Font("Dialog", Font.PLAIN, 8)); // 글자 크기 변경
         pro_panel4_2_label3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        pro_panel4_2_label3.setText("<html><p style=\"width:450\">"+printList.get(2).getProgress().replace("\n","<br>")+"</p></html>");
+        pro_panel4_2_label3.setText("<html><p style=\"width:400\">"+printList.get(2).getProgress().replace("\n","<br>")+"</p></html>");
         pro_panel4_2_label3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
 
         tmp = printList.get(3).getProgress().split("\\n");
         if(tmp.length>=3) pro_panel4_2_label4.setFont(new java.awt.Font("Dialog", Font.PLAIN, 8)); // 글자 크기 변경
         pro_panel4_2_label4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        pro_panel4_2_label4.setText("<html><p style=\"width:450\">"+printList.get(3).getProgress().replace("\n","<br>")+"</p></html>");
+        pro_panel4_2_label4.setText("<html><p style=\"width:400\">"+printList.get(3).getProgress().replace("\n","<br>")+"</p></html>");
         pro_panel4_2_label4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
 
         tmp = printList.get(4).getProgress().split("\\n");
         if(tmp.length>=3) pro_panel4_2_label5.setFont(new java.awt.Font("Dialog", Font.PLAIN, 8)); // 글자 크기 변경
         pro_panel4_2_label5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        pro_panel4_2_label5.setText("<html><p style=\"width:450\">"+printList.get(4).getProgress().replace("\n","<br>")+"</p></html>");
+        pro_panel4_2_label5.setText("<html><p style=\"width:400\">"+printList.get(4).getProgress().replace("\n","<br>")+"</p></html>");
         pro_panel4_2_label5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
 
         tmp = printList.get(5).getProgress().split("\\n");
         if(tmp.length>=3) pro_panel4_2_label6.setFont(new java.awt.Font("Dialog", Font.PLAIN, 8)); // 글자 크기 변경
         pro_panel4_2_label6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        pro_panel4_2_label6.setText("<html><p style=\"width:450\">"+printList.get(5).getProgress().replace("\n","<br>")+"</p></html>");
+        pro_panel4_2_label6.setText("<html><p style=\"width:400\">"+printList.get(5).getProgress().replace("\n","<br>")+"</p></html>");
         pro_panel4_2_label6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
 
         tmp = printList.get(6).getProgress().split("\\n");
         if(tmp.length>=3) pro_panel4_2_label7.setFont(new java.awt.Font("Dialog", Font.PLAIN, 8)); // 글자 크기 변경
         pro_panel4_2_label7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        pro_panel4_2_label7.setText("<html><p style=\"width:450\">"+printList.get(6).getProgress().replace("\n","<br>")+"</p></html>");
+        pro_panel4_2_label7.setText("<html><p style=\"width:400\">"+printList.get(6).getProgress().replace("\n","<br>")+"</p></html>");
         pro_panel4_2_label7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
 
         tmp = printList.get(7).getProgress().split("\\n");
         if(tmp.length>=3) pro_panel4_2_label8.setFont(new java.awt.Font("Dialog", Font.PLAIN, 8)); // 글자 크기 변경
         pro_panel4_2_label8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        pro_panel4_2_label8.setText("<html><p style=\"width:450\">"+printList.get(7).getProgress().replace("\n","<br>")+"</p></html>");
+        pro_panel4_2_label8.setText("<html><p style=\"width:400\">"+printList.get(7).getProgress().replace("\n","<br>")+"</p></html>");
         pro_panel4_2_label8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
 
         tmp = printList.get(8).getProgress().split("\\n");
         if(tmp.length>=3) pro_panel4_2_label9.setFont(new java.awt.Font("Dialog", Font.PLAIN, 8)); // 글자 크기 변경
         pro_panel4_2_label9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        pro_panel4_2_label9.setText("<html><p style=\"width:450\">"+printList.get(8).getProgress().replace("\n","<br>")+"</p></html>");
+        pro_panel4_2_label9.setText("<html><p style=\"width:400\">"+printList.get(8).getProgress().replace("\n","<br>")+"</p></html>");
         pro_panel4_2_label9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
 
         tmp = printList.get(9).getProgress().split("\\n");
         if(tmp.length>=3) pro_panel4_2_label10.setFont(new java.awt.Font("Dialog", Font.PLAIN, 8)); // 글자 크기 변경
         pro_panel4_2_label10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        pro_panel4_2_label10.setText("<html><p style=\"width:450\">"+printList.get(9).getProgress().replace("\n","<br>")+"</p></html>");
+        pro_panel4_2_label10.setText("<html><p style=\"width:400\">"+printList.get(9).getProgress().replace("\n","<br>")+"</p></html>");
         pro_panel4_2_label10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
 
         javax.swing.GroupLayout pro_panel4_2Layout = new javax.swing.GroupLayout(pro_panel4_2);
@@ -2326,6 +2344,7 @@ public class SemesterMonthTable extends javax.swing.JFrame {
         hwk_panel2.setPreferredSize(new java.awt.Dimension(100, 340));
 
         hwk_panel2_1.setBackground(new java.awt.Color(255, 255, 204));
+        hwk_panel2_1.setPreferredSize(new java.awt.Dimension(100, 20));
         hwk_panel2_1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
 
         hwk_panel2_1_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -2429,6 +2448,7 @@ public class SemesterMonthTable extends javax.swing.JFrame {
         hwk_panel3.setPreferredSize(new java.awt.Dimension(500, 340));
 
         hwk_panel3_1.setBackground(new java.awt.Color(255, 255, 204));
+        hwk_panel3_1.setPreferredSize(new java.awt.Dimension(500, 20));
         hwk_panel3_1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
 
         hwk_panel3_1_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -2590,6 +2610,7 @@ public class SemesterMonthTable extends javax.swing.JFrame {
         thirdPanel.setPreferredSize(new java.awt.Dimension(1400, 180));
 
         cln_panel1.setBackground(new java.awt.Color(255, 204, 0));
+        cln_panel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         cln_panel1.setPreferredSize(new java.awt.Dimension(50, 180));
 
         cln_panel1_label.setFont(new java.awt.Font("Dialog", Font.BOLD, 15)); // NOI18N
@@ -2772,6 +2793,7 @@ public class SemesterMonthTable extends javax.swing.JFrame {
                         .addComponent(cln_panel4_1_label, javax.swing.GroupLayout.DEFAULT_SIZE, 18, Short.MAX_VALUE)
         );
 
+
         cln_panel4_label1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         cln_panel4_label1.setText(printClinicList.get(0).getAchivementLevel());
         cln_panel4_label1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
@@ -2819,6 +2841,8 @@ public class SemesterMonthTable extends javax.swing.JFrame {
                                 .addComponent(cln_panel4_label5, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
+        cln_panel5.setPreferredSize(new java.awt.Dimension(500, 340));
+
         cln_panel5_1.setBackground(new java.awt.Color(255, 204, 0));
         cln_panel5_1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         cln_panel5_1.setPreferredSize(new java.awt.Dimension(500, 20));
@@ -2840,25 +2864,33 @@ public class SemesterMonthTable extends javax.swing.JFrame {
                         .addComponent(cln_panel5_1_label, javax.swing.GroupLayout.DEFAULT_SIZE, 18, Short.MAX_VALUE)
         );
 
+
+
+        if(printClinicList.get(0).getWeakUnit().length() >= 110) cln_panel5_label1.setFont(new java.awt.Font("Dialog", Font.PLAIN, 8)); // 글자 크기 변경
         cln_panel5_label1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        cln_panel5_label1.setText("<html><p style=\"width:450\">"+printClinicList.get(0).getWeakUnit()+"</p></html>");
+        cln_panel5_label1.setText("<html><p style=\"width:450\">"+printClinicList.get(0).getWeakUnit().replace("\n", "<br>")+"</p></html>");
         cln_panel5_label1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
 
+        if(printClinicList.get(1).getWeakUnit().length() >= 110) cln_panel5_label2.setFont(new java.awt.Font("Dialog", Font.PLAIN, 8)); // 글자 크기 변경
         cln_panel5_label2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         cln_panel5_label2.setText("<html><p style=\"width:450\">"+printClinicList.get(1).getWeakUnit()+"</p></html>");
         cln_panel5_label2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
 
+        if(printClinicList.get(2).getWeakUnit().length() >= 110) cln_panel5_label3.setFont(new java.awt.Font("Dialog", Font.PLAIN, 8)); // 글자 크기 변경
         cln_panel5_label3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         cln_panel5_label3.setText("<html><p style=\"width:450\">"+printClinicList.get(2).getWeakUnit()+"</p></html>");
         cln_panel5_label3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
 
+        if(printClinicList.get(3).getWeakUnit().length() >= 110) cln_panel5_label4.setFont(new java.awt.Font("Dialog", Font.PLAIN, 8)); // 글자 크기 변경
         cln_panel5_label4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         cln_panel5_label4.setText("<html><p style=\"width:450\">"+printClinicList.get(3).getWeakUnit()+"</p></html>");
         cln_panel5_label4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
 
+        if(printClinicList.get(4).getWeakUnit().length() >= 110) cln_panel5_label5.setFont(new java.awt.Font("Dialog", Font.PLAIN, 8)); // 글자 크기 변경
         cln_panel5_label5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         cln_panel5_label5.setText("<html><p style=\"width:450\">"+printClinicList.get(4).getWeakUnit()+"</p></html>");
         cln_panel5_label5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+
 
         javax.swing.GroupLayout cln_panel5Layout = new javax.swing.GroupLayout(cln_panel5);
         cln_panel5.setLayout(cln_panel5Layout);
@@ -2911,22 +2943,29 @@ public class SemesterMonthTable extends javax.swing.JFrame {
                         .addComponent(cln_panel6_1_label, javax.swing.GroupLayout.DEFAULT_SIZE, 18, Short.MAX_VALUE)
         );
 
+
+
+        if(printClinicList.get(0).getDetailCourse().length() >= 110) cln_panel6_label1.setFont(new java.awt.Font("Dialog", Font.PLAIN, 8)); // 글자 크기 변경
         cln_panel6_label1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         cln_panel6_label1.setText("<html><p style=\"width:450\">"+printClinicList.get(0).getDetailCourse()+"</p></html>");
         cln_panel6_label1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
 
+        if(printClinicList.get(1).getDetailCourse().length() >= 110) cln_panel6_label2.setFont(new java.awt.Font("Dialog", Font.PLAIN, 8)); // 글자 크기 변경
         cln_panel6_label2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         cln_panel6_label2.setText("<html><p style=\"width:450\">"+printClinicList.get(1).getDetailCourse()+"</p></html>");
         cln_panel6_label2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
 
+        if(printClinicList.get(2).getDetailCourse().length() >= 110) cln_panel6_label3.setFont(new java.awt.Font("Dialog", Font.PLAIN, 8)); // 글자 크기 변경
         cln_panel6_label3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         cln_panel6_label3.setText("<html><p style=\"width:450\">"+printClinicList.get(2).getDetailCourse()+"</p></html>");
         cln_panel6_label3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
 
+        if(printClinicList.get(3).getDetailCourse().length() >= 110) cln_panel6_label4.setFont(new java.awt.Font("Dialog", Font.PLAIN, 8)); // 글자 크기 변경
         cln_panel6_label4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         cln_panel6_label4.setText("<html><p style=\"width:450\">"+printClinicList.get(3).getDetailCourse()+"</p></html>");
         cln_panel6_label4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
 
+        if(printClinicList.get(4).getDetailCourse().length() >= 110) cln_panel6_label5.setFont(new java.awt.Font("Dialog", Font.PLAIN, 8)); // 글자 크기 변경
         cln_panel6_label5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         cln_panel6_label5.setText("<html><p style=\"width:450\">"+printClinicList.get(4).getDetailCourse()+"</p></html>");
         cln_panel6_label5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
@@ -2983,27 +3022,50 @@ public class SemesterMonthTable extends javax.swing.JFrame {
 
 
 
-        tch_opn_TextArea.setEditable(false);
-        tch_opn_TextArea.setText("안녕하세요. 이번 달 중3에 대한 소견 말씀드리겠습니다. 이번 달은 수(상) 내용을 원의 방정식 단원까지 나갔습니다. \n아무래도 빠르게 나가다 보니 학생들이 어려움을 느끼기도 했지만, 이번 수(상) 진도로 인해 1월에 있을 집중반에서 좀 더 \n좋은 성취를 이룰 수 있을 것입니다. 1월에는 A반은 수학(상), 수학(하)에 관한 진도를 나가고, 2월에는 수1에 관련한 \n진도를 나가게 되고, B반은 수학(상), 수학(하)를1, 2월간 나가게 됩니다. 만약 A반에 배정되었지만 고1 수학 위주로 \n학습하고 싶은 학생들은 B반으로 가서 학습을 해도 가능합니다. 이 부분은 따로 연락해주시길 바랍니다. \n이번에 학원 이전을 하면서 바빳던 것들이 거의 다 끝나 갑니다. 전부 학생들과 학부모님들 덕분에 좀 더 좋은 환경에서 \n수업하게 되어서 기쁩니다. 그만큼 좋은 환경에서 좋은 강의와 관리를 하도록 하겠습니다. 새해에는 항상 기쁘고, 행복한 \n일만 가득했으면 합니다. 늘 감사드립니다.".replace("\n",""));
+        for (StudentOpinionData studentopinionData : soList) {
+            if (studentopinionData.getName().equals(sName)) {
+                tch_opn_panel2_label.setText("<html><p style=\"width:1300\">"+studentopinionData.getOpinion().replace("\n","<br>")+"</p></html>");
+                tch_opn_panel2_label.setPreferredSize(new java.awt.Dimension(1400, 80));
+            }
+        }
+        tch_opn_panel2_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        tch_opn_panel2_label.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
 
-//        tch_opn_TextArea.setColumns(20);
-//        tch_opn_TextArea.setRows(5);
-//        tch_opn_TextArea.setText("안녕하세요. 이번 달 중3에 대한 소견 말씀드리겠습니다. 이번 달은 수(상) 내용을 원의 방정식 단원까지 나갔습니다. \n아무래도 빠르게 나가다 보니 학생들이 어려움을 느끼기도 했지만, 이번 수(상) 진도로 인해 1월에 있을 집중반에서 좀 더 \n좋은 성취를 이룰 수 있을 것입니다. 1월에는 A반은 수학(상), 수학(하)에 관한 진도를 나가고, 2월에는 수1에 관련한 \n진도를 나가게 되고, B반은 수학(상), 수학(하)를1, 2월간 나가게 됩니다. 만약 A반에 배정되었지만 고1 수학 위주로 \n학습하고 싶은 학생들은 B반으로 가서 학습을 해도 가능합니다. 이 부분은 따로 연락해주시길 바랍니다. \n이번에 학원 이전을 하면서 바빳던 것들이 거의 다 끝나 갑니다. 전부 학생들과 학부모님들 덕분에 좀 더 좋은 환경에서 \n수업하게 되어서 기쁩니다. 그만큼 좋은 환경에서 좋은 강의와 관리를 하도록 하겠습니다. 새해에는 항상 기쁘고, 행복한 \n일만 가득했으면 합니다. 늘 감사드립니다.");
-//        jScrollPane1.setViewportView(tch_opn_TextArea);
+
+        javax.swing.GroupLayout tch_opn_panel2Layout = new javax.swing.GroupLayout(tch_opn_panel2);
+        tch_opn_panel2.setLayout(tch_opn_panel2Layout);
+        tch_opn_panel2Layout.setHorizontalGroup(
+                tch_opn_panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(tch_opn_panel2Layout.createSequentialGroup()
+                                .addGap(0, 0, 0)
+                                .addComponent(tch_opn_panel2_label, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(0, 0, 0))
+        );
+        tch_opn_panel2Layout.setVerticalGroup(
+                tch_opn_panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(tch_opn_panel2Layout.createSequentialGroup()
+                                .addGap(0, 0, 0)
+                                .addComponent(tch_opn_panel2_label, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(0, 0, 0))
+        );
+
+
+
 
         javax.swing.GroupLayout teacher_opinion_panelLayout = new javax.swing.GroupLayout(teacher_opinion_panel);
         teacher_opinion_panel.setLayout(teacher_opinion_panelLayout);
         teacher_opinion_panelLayout.setHorizontalGroup(
                 teacher_opinion_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(tch_opn_panel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(tch_opn_TextArea)
+                        .addComponent(tch_opn_panel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         teacher_opinion_panelLayout.setVerticalGroup(
                 teacher_opinion_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(teacher_opinion_panelLayout.createSequentialGroup()
                                 .addComponent(tch_opn_panel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, 0)
-                                .addComponent(tch_opn_TextArea))
+                                .addComponent(tch_opn_panel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, 0))
         );
 
         javax.swing.GroupLayout thirdPanelLayout = new javax.swing.GroupLayout(thirdPanel);
@@ -3309,6 +3371,8 @@ public class SemesterMonthTable extends javax.swing.JFrame {
     private javax.swing.JTextPane tch_opn_TextArea;
     private javax.swing.JPanel tch_opn_panel1;
     private javax.swing.JLabel tch_opn_panel1_label;
+    private javax.swing.JPanel tch_opn_panel2;
+    private javax.swing.JLabel tch_opn_panel2_label;
     private javax.swing.JPanel teacher_opinion_panel;
     private javax.swing.JLabel teset_panel3_1_label;
     private javax.swing.JPanel test_panel1;

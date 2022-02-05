@@ -15,9 +15,6 @@ import java.util.*;
 public class ReadSheet {
     public static String loadFilePath;
     public static String loadFileName;
-    public static String saveFilePath;
-    public static String userWeek;
-    public static String userMonth;
     public ArrayList<StudentData> studentList;
     public ArrayList<String> nameList;
 
@@ -39,12 +36,9 @@ public class ReadSheet {
     }
 
 
-    public ReadSheet(String loadFilePath, String loadFileName, String saveFilePath, String userMonth, String userWeek) {
+    public ReadSheet(String loadFilePath, String loadFileName) {
         this.loadFilePath = loadFilePath;
         this.loadFileName = loadFileName;
-        this.saveFilePath = saveFilePath;
-        this.userMonth = userMonth;
-        this.userWeek = userWeek;
 
 
         //엑셀 데이터 읽어오기 -> studentList(학생 전체), weekNumList(주차 이름), nameList(학생 이름) 생성
@@ -148,11 +142,9 @@ public class ReadSheet {
 
             for (StudentData s : studentList) {
 //                System.out.println("<" + s.getName() + ">");
-//                System.out.println("s.getWeek : " + s.getWeek() + "userWeek : " + userWeek);
-//                System.out.println("s.getMonth" + s.getMonth() + "userMonth : " + userMonth);
 //                System.out.println("!nameList.contains(s.getName()) : " + !nameList.contains(s.getName()));
 
-                if ((s.getWeek().equals(userWeek) && s.getMonth().equals(userMonth)) && !nameList.contains(s.getName())) {
+                if (!nameList.contains(s.getName())) {
                     nameList.add(s.getName());
                 }
             }

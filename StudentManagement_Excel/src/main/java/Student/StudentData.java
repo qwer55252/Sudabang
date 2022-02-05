@@ -14,6 +14,7 @@ public class StudentData {
     private String week_num;
     private String month;
     private String week;
+    private String opinion;
 
     public String getMonth() {
         return month;
@@ -118,6 +119,17 @@ public class StudentData {
     public void setWeek_num(String week_num) {
         this.week_num = week_num;
     }
+
+    public String getOpinion() {
+        return opinion;
+    }
+
+    public void setOpinion(String opinion) {
+        this.opinion = opinion;
+    }
+
+
+
     public StudentData(){
 
     }
