@@ -302,15 +302,15 @@ public class Main_UI extends JFrame {
             //이름 리스트(sheet0)
             ArrayList<String> sheet0NameList = new ArrayList<String>();
             for (StudentData s : sheet0.studentList) {
-                if ((s.getMonth().equals(userMonth)) && !sheet0NameList.contains(s.getName())) {
+                if (!sheet0NameList.contains(s.getName())) {
                     sheet0NameList.add(s.getName());
                 }
-            }
+            } // 안 쓰임
 
 //            //이름 리스트(sheet3)
             ArrayList<String> sheet3NameList = new ArrayList<String>();
             for (StudentClinicData s : sheet3.studentList) {
-                if ((s.getMonth().equals(userMonth)) && !sheet3NameList.contains(s.getName())) {
+                if (!sheet3NameList.contains(s.getName())) {
                     sheet3NameList.add(s.getName());
                 }
             }
@@ -354,7 +354,7 @@ public class Main_UI extends JFrame {
             //이름 리스트(sheet0)
             ArrayList<String> sheet0NameList = new ArrayList<String>();
             for (StudentData s : sheet0.studentList) {
-                if ((s.getMonth().equals(userMonth)) && !sheet0NameList.contains(s.getName())) {
+                if (!sheet0NameList.contains(s.getName())) {
                     sheet0NameList.add(s.getName());
                 }
             }
@@ -362,10 +362,10 @@ public class Main_UI extends JFrame {
             //이름 리스트(sheet3)
             ArrayList<String> sheet3NameList = new ArrayList<String>();
             for (StudentClinicData s : sheet3.studentList) {
-                if ((s.getMonth().equals(userMonth)) && !sheet3NameList.contains(s.getName())) {
+                if (!sheet3NameList.contains(s.getName())) {
                     sheet3NameList.add(s.getName());
                 }
-            }
+            } // 안 쓰임
 
             System.out.println(sheet0NameList);
 //            System.out.println(sheet3NameList);
@@ -377,8 +377,8 @@ public class Main_UI extends JFrame {
             for (String name : sheet0NameList){
                 String pathName1 = saveFilePath + name + " " + userMonth + "월 월간 관리표(1).png"; // 경로명 + 파일명
                 String pathName2 = saveFilePath + name + " " + userMonth + "월 월간 관리표(2).png"; // 경로명 + 파일명
-                new CaptureJFrame(new VacationMonthTable_1(sheet0.studentList, sheet3.studentList ,name, userMonth).getContentPane(), pathName1);
-                new CaptureJFrame(new VacationMonthTable_2(sheet0.studentList, sheet3.studentList ,name, userMonth).getContentPane(), pathName2);
+                new CaptureJFrame(new VacationMonthTable_1(sheet0.studentList, sheet3.studentList, name, userMonth).getContentPane(), pathName1);
+                new CaptureJFrame(new VacationMonthTable_2(sheet0.studentList, sheet3.studentList, sheet5.studentList, name, userMonth).getContentPane(), pathName2);
             }
             System.out.println("모든 파일을 저장했습니다!");
         }

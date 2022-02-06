@@ -74,8 +74,8 @@ public class ReadSheet {
                 // 각각의 행에 존재하는 모든 열(cell)을 순회한다.
                 Iterator<Cell> cellIterator = row.cellIterator();
                 StudentData s = new StudentData(); //학생 한 명의 정보를 저장할 객체 -> studentList에 넣어줄거임
-                int cellCnt = 0; //13번째 셀 까지만
-                while (cellIterator.hasNext() && cellCnt!=13) {
+                int cellCnt = 0; //14번째 셀 까지만
+                while (cellIterator.hasNext() && cellCnt!=14) {
                     Cell cell = cellIterator.next();
                     if(cellCnt==0){ //순번 무시
                         cellCnt++;
@@ -124,6 +124,7 @@ public class ReadSheet {
                         case 10 -> s.setProgress(value);
                         case 11 -> s.setMonth(value);
                         case 12 -> s.setWeek(value);
+                        case 13 -> s.setClass_average(value); //일단 평균이라고 잡아둠(임시)
                     }
                     s.setWeek_num(s.getMonth()+"월 "+s.getWeek()+"주차");
                     cellCnt++;
@@ -147,6 +148,51 @@ public class ReadSheet {
                 if (!nameList.contains(s.getName())) {
                     nameList.add(s.getName());
                 }
+            }
+
+            //날짜 리스트
+            ArrayList<String> dateList;
+
+            dateList = new ArrayList<String>();
+
+            for (StudentData s : studentList) {
+                if (!dateList.contains(s.getDate())) {
+                    dateList.add(s.getDate());
+                }
+            }
+
+
+            //반 평균 구하기
+            for (String d : dateList){
+                int sum = 0; //점수 합
+                int num = 0; //학생 수
+                int average = 0;
+                String classAverage = "-";
+                for (StudentData s : studentList){
+                    if(!d.equals(s.getDate())) continue;
+                    if(s.getTest_score().contains("/")){
+                        num += 1; //학생 수 증가
+                        sum += Integer.parseInt(s.getClass_average());
+                    }
+                }
+                if(num != 0) {
+                    average = sum / num;
+                    classAverage = Integer.toString(average); //반 평균
+                    if (average == 0) classAverage = "-";
+                    for (StudentData s : studentList) {
+                        if (!d.equals(s.getDate())) continue;
+                        s.setClass_average(classAverage);
+                    }
+                }
+                else {
+                    for (StudentData s : studentList) {
+                        if (!d.equals(s.getDate())) continue;
+                        s.setClass_average("-");
+                    }
+                }
+
+                System.out.println("날짜 : "+ d);
+                System.out.println("평균 : "+ classAverage);
             }
 
             file.close();

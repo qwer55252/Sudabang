@@ -15,6 +15,16 @@ public class StudentData {
     private String month;
     private String week;
     private String opinion;
+    private String class_average;
+
+
+    public String getClass_average() {
+        return class_average;
+    }
+
+    public void setClass_average(String class_average) {
+        this.class_average = class_average;
+    }
 
     public String getMonth() {
         return month;
@@ -134,7 +144,7 @@ public class StudentData {
 
     }
 
-    public StudentData(String week_num, String name, String attendance, String assignment_performance, String planner_performance, String concentration, String test_score, String assignment_comment, String textbook, String progress, String date, String month, String week) {
+    public StudentData(String name, String attendance, String assignment_performance, String planner_performance, String concentration, String test_score, String assignment_comment, String textbook, String progress, String date, String week_num, String month, String week, String opinion, String class_average) {
         this.name = name;
         this.attendance = attendance;
         this.assignment_performance = assignment_performance;
@@ -147,7 +157,8 @@ public class StudentData {
         this.date = date;
         this.month = month;
         this.week = week;
-        this.week_num = week_num;
+        this.opinion = opinion;
+        this.class_average = class_average;
     }
 }
 
