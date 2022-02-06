@@ -302,15 +302,15 @@ public class Main_UI extends JFrame {
             //이름 리스트(sheet0)
             ArrayList<String> sheet0NameList = new ArrayList<String>();
             for (StudentData s : sheet0.studentList) {
-                if ((s.getMonth().equals(userMonth)) && !sheet0NameList.contains(s.getName())) {
+                if (!sheet0NameList.contains(s.getName())) {
                     sheet0NameList.add(s.getName());
                 }
-            }
+            } // 안 쓰임
 
 //            //이름 리스트(sheet3)
             ArrayList<String> sheet3NameList = new ArrayList<String>();
             for (StudentClinicData s : sheet3.studentList) {
-                if ((s.getMonth().equals(userMonth)) && !sheet3NameList.contains(s.getName())) {
+                if (!sheet3NameList.contains(s.getName())) {
                     sheet3NameList.add(s.getName());
                 }
             }
@@ -354,7 +354,7 @@ public class Main_UI extends JFrame {
             //이름 리스트(sheet0)
             ArrayList<String> sheet0NameList = new ArrayList<String>();
             for (StudentData s : sheet0.studentList) {
-                if ((s.getMonth().equals(userMonth)) && !sheet0NameList.contains(s.getName())) {
+                if (!sheet0NameList.contains(s.getName())) {
                     sheet0NameList.add(s.getName());
                 }
             }
@@ -362,10 +362,10 @@ public class Main_UI extends JFrame {
             //이름 리스트(sheet3)
             ArrayList<String> sheet3NameList = new ArrayList<String>();
             for (StudentClinicData s : sheet3.studentList) {
-                if ((s.getMonth().equals(userMonth)) && !sheet3NameList.contains(s.getName())) {
+                if (!sheet3NameList.contains(s.getName())) {
                     sheet3NameList.add(s.getName());
                 }
-            }
+            } // 안 쓰임
 
             System.out.println(sheet0NameList);
 //            System.out.println(sheet3NameList);

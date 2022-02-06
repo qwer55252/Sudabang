@@ -1017,50 +1017,52 @@ public class VacationMonthTable_2 extends javax.swing.JFrame {
         );
 
         test_panel4_label1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        test_panel4_label1.setText("-");
+        test_panel4_label1.setText(printList.get(0).getClass_average());
         test_panel4_label1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         test_panel4_label1.setPreferredSize(new java.awt.Dimension(50, 16));
 
         test_panel4_label2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        test_panel4_label2.setText("-");
+        test_panel4_label2.setText(printList.get(1).getClass_average());
         test_panel4_label2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         test_panel4_label2.setPreferredSize(new java.awt.Dimension(50, 16));
 
         test_panel4_label3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        test_panel4_label3.setText("-");
+        test_panel4_label3.setText(printList.get(2).getClass_average());
         test_panel4_label3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         test_panel4_label3.setPreferredSize(new java.awt.Dimension(50, 16));
 
         test_panel4_label4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        test_panel4_label4.setText("-");
+        test_panel4_label4.setText(printList.get(3).getClass_average());
         test_panel4_label4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         test_panel4_label4.setPreferredSize(new java.awt.Dimension(50, 16));
 
         test_panel4_label5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        test_panel4_label5.setText("-");
+        test_panel4_label5.setText(printList.get(4).getClass_average());
         test_panel4_label5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         test_panel4_label5.setPreferredSize(new java.awt.Dimension(50, 16));
 
         test_panel4_label6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        test_panel4_label6.setText("-");
+        test_panel4_label6.setText(printList.get(5).getClass_average());
         test_panel4_label6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         test_panel4_label6.setPreferredSize(new java.awt.Dimension(50, 16));
 
         test_panel4_label7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        test_panel4_label7.setText("-");
+        test_panel4_label7.setText(printList.get(6).getClass_average());
         test_panel4_label7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         test_panel4_label7.setPreferredSize(new java.awt.Dimension(50, 16));
 
         test_panel4_label8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        test_panel4_label8.setText("-");
+        test_panel4_label8.setText(printList.get(7).getClass_average());
         test_panel4_label8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         test_panel4_label8.setPreferredSize(new java.awt.Dimension(50, 16));
 
         test_panel4_label9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        test_panel4_label9.setText(printList.get(8).getClass_average());
         test_panel4_label9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         test_panel4_label9.setPreferredSize(new java.awt.Dimension(50, 16));
 
         test_panel4_label10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        test_panel4_label10.setText(printList.get(9).getClass_average());
         test_panel4_label10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         test_panel4_label10.setPreferredSize(new java.awt.Dimension(50, 16));
 
