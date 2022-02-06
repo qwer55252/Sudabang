@@ -10,15 +10,21 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-// 기능 : filePath/fileName 엑셀파일의 학습관리표2를 읽어서 userMonth월 userweek주차 모든 학생의 주간관리표 캡처본 저장
-public class ReadClinicSheet {
 
+// 기능 : filePath/fileName 엑셀파일의 학습관리표를 읽어서 nameList와 studentList에 저장
+public class ReadOpinionSheet {
     public static String loadFilePath;
     public static String loadFileName;
-    public static String userWeek;
-    public static String userMonth;
-    public ArrayList<StudentClinicData> studentList;
+
+    public ArrayList<StudentOpinionData> studentList;
     public ArrayList<String> nameList;
+
+    public ArrayList<String> getNameList() {
+        return nameList;
+    }
+    public ArrayList<StudentOpinionData> getStudentList() {
+        return studentList;
+    }
 
     //Row가 비었는지 확인하는 메서드
     public static boolean isRowEmpty(Row row) {
@@ -31,11 +37,9 @@ public class ReadClinicSheet {
     }
 
 
-    public ReadClinicSheet(String loadFilePath, String loadFileName, String userMonth, String userWeek) {
+    public ReadOpinionSheet(String loadFilePath, String loadFileName) {
         this.loadFilePath = loadFilePath;
         this.loadFileName = loadFileName;
-        this.userMonth = userMonth;
-        this.userWeek = userWeek;
 
 
         //엑셀 데이터 읽어오기 -> studentList(학생 전체), weekNumList(주차 이름), nameList(학생 이름) 생성
@@ -46,8 +50,8 @@ public class ReadClinicSheet {
             // 엑셀 파일로 Workbook instance를 생성한다.
             XSSFWorkbook workbook = new XSSFWorkbook(file);
 
-            // workbook의 네 번째 sheet를 가저온다. -> 학습 관리표2
-            XSSFSheet sheet = workbook.getSheetAt(3);
+            // workbook의 첫번째 sheet를 가저온다. -> 학습 관리표
+            XSSFSheet sheet = workbook.getSheetAt(5);
 
             // 만약 특정 이름의 시트를 찾는다면 workbook.getSheet("찾는 시트의 이름");
             // 만약 모든 시트를 순회하고 싶으면
@@ -59,7 +63,7 @@ public class ReadClinicSheet {
             // 모든 행(row)들을 조회한다. -> 첫 번째 행은 무시(학생 이름)
             int rowCnt = 0;
             Iterator<Row> rowIterator = sheet.iterator();
-            ArrayList<StudentClinicData> studentList = new ArrayList<>(); //전체 학생들 정보
+            ArrayList<StudentOpinionData> studentList = new ArrayList<>(); //전체 학생들 정보
             while (rowIterator.hasNext()) {
                 Row row = rowIterator.next();
                 if(rowCnt==0||rowCnt==1){
@@ -70,11 +74,11 @@ public class ReadClinicSheet {
 
                 // 각각의 행에 존재하는 모든 열(cell)을 순회한다.
                 Iterator<Cell> cellIterator = row.cellIterator();
-                StudentClinicData s = new StudentClinicData(); //학생 한 명의 정보를 저장할 객체 -> studentList에 넣어줄거임
-                int cellCnt = 0; //20번째 셀 까지만
-                while (cellIterator.hasNext() && cellCnt!=20) { // cellCnt는 0부터 시작임
+                StudentOpinionData s = new StudentOpinionData(); //학생 한 명의 정보를 저장할 객체 -> studentList에 넣어줄거임
+                int cellCnt = 0; //3번째 셀 까지만
+                while (cellIterator.hasNext() && cellCnt!=3) {
                     Cell cell = cellIterator.next();
-                    if(cellCnt==0||cellCnt==11||cellCnt==12||cellCnt==13||cellCnt==14||cellCnt==16||cellCnt==18){ // 연번, 주차개수, 주차 유니크, 이름 개수, 이름 유니크, 병합2, 숫자세기 무시
+                    if(cellCnt==0){ //순번 무시
                         cellCnt++;
                         continue;
                     }
@@ -82,52 +86,27 @@ public class ReadClinicSheet {
                     // cell의 타입을 확인 하고, 값을 가져온다.
                     switch (cell.getCellType()) {
                         case NUMERIC -> {
-                            if (DateUtil.isCellDateFormatted(cell)&&cellCnt==1) { //문제 해결: 날짜 포멧인 경우엔 예외로 처리해줘야함
-                                Date date = cell.getDateCellValue();
-                                value = new SimpleDateFormat("yyyy.MM.dd").format(date); //저장할 날짜 포맷
-                                //System.out.print("<" + value + ">");
-                            }
-                            else if(cellCnt==2){ //출결
-                                SimpleDateFormat time = new SimpleDateFormat("a h:mm"); //엑셀 서식에 따라 지정해줘야 함
-                                value = time.format(cell.getDateCellValue());
-                                //System.out.print("<"+value+">");
-                            }
-                            else {
-                                value = Integer.toString((int)cell.getNumericCellValue()); //Numeric은 기본적으로 정수를 반환하지 않기 때문에 정수로 강제 형 변환 후 문자열로 파싱
-                                //System.out.print("<" + (int) cell.getNumericCellValue() + ">"); //getNumericCellValue 메서드는 기본으로 double형 반환
-                            }
+                            value = Integer.toString((int)cell.getNumericCellValue()); //Numeric은 기본적으로 정수를 반환하지 않기 때문에 정수로 강제 형 변환 후 문자열로 파싱
+                            System.out.print("<" + (int) cell.getNumericCellValue() + ">"); //getNumericCellValue 메서드는 기본으로 double형 반환
                         }
                         case STRING -> {
                             value = cell.getStringCellValue();
-                            //System.out.print("<" + cell.getStringCellValue() + ">");
+                            System.out.print("<" + cell.getStringCellValue() + ">");
                         }
                         case FORMULA -> { //셀에 수식이 있는 경우엔 FormulaEvaluator를 사용하면 결과값을 얻을 수 있다.
                             FormulaEvaluator formulaEval = workbook.getCreationHelper().createFormulaEvaluator();
                             value = formulaEval.evaluate(cell).formatAsString();
                             value = value.substring(0,value.length()-2);
-                            //System.out.print("<" + value + ">");
+                            System.out.print("<" + value + ">");
                         }
                     }
                     switch (cellCnt){ //switch문을 사용하면 if~if else보다는 좀 더 코드가 보기 좋아짐
-                        case 1 -> s.setDate(value);
-                        case 2 -> s.setAttendance(value);
-                        case 3 -> s.setName(value);
-                        case 4 -> s.setUnitName(value);
-                        case 5 -> s.setAchivementLevel(value);
-                        case 6 -> s.setWeakUnit(value);
-                        case 7 -> s.setDetailCourse(value);
-                        case 8 -> s.setMonth(value);
-                        case 9 -> s.setWeek(value);
-                        case 10 -> s.setMonth_weekNum(s.getMonth() +"월 " + s.getWeek() +"주차");
-                        case 15 -> s.setCount(value);
-                        case 17 -> s.setName_month_weekNum(value);
-                        case 19 -> s.setName_month_weekNum_count(value);
-
+                        case 1 -> s.setName(value);
+                        case 2 -> s.setOpinion(value);
                     }
-
                     cellCnt++;
                 }
-                //System.out.println();
+                System.out.println();
                 //studentList에 한 명씩 추가
                 studentList.add(s);
                 rowCnt++;
@@ -138,13 +117,23 @@ public class ReadClinicSheet {
 
             //이름 리스트
             nameList = new ArrayList<String>();
-            for (StudentClinicData s : studentList) {
-                if ((s.getWeek().equals(userWeek)&&s.getMonth().equals(userMonth)) && !nameList.contains(s.getName())) {
+
+            for (StudentOpinionData s : studentList) {
+//                System.out.println("<" + s.getName() + ">");
+//                System.out.println("s.getWeek : " + s.getWeek() + "userWeek : " + userWeek);
+//                System.out.println("s.getMonth" + s.getMonth() + "userMonth : " + userMonth);
+//                System.out.println("!nameList.contains(s.getName()) : " + !nameList.contains(s.getName()));
+
+                if (!nameList.contains(s.getName())) {
                     nameList.add(s.getName());
                 }
             }
 
             file.close();
+
+            //System.out.println("<nameList> : " + nameList);
+            //System.out.println("<studentList> : " + studentList);
+
 
             this.nameList = nameList;
             this.studentList = studentList;
@@ -153,4 +142,5 @@ public class ReadClinicSheet {
             e.printStackTrace();
         }
     }
+
 }
