@@ -964,7 +964,7 @@ public class SemesterMonthTable extends javax.swing.JFrame {
 
         test_panel4_1.setBackground(new java.awt.Color(204, 204, 255));
         test_panel4_1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
-        test_panel4_1.setPreferredSize(new java.awt.Dimension(52, 16));
+        test_panel4_1.setPreferredSize(new java.awt.Dimension(50, 16));
 
         test_panel4_1_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         test_panel4_1_label.setText("반평균");
@@ -1496,7 +1496,7 @@ public class SemesterMonthTable extends javax.swing.JFrame {
 
         con_panel3_1.setBackground(new java.awt.Color(204, 229, 255));
         con_panel3_1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
-        con_panel3_1.setPreferredSize(new java.awt.Dimension(52, 16));
+        con_panel3_1.setPreferredSize(new java.awt.Dimension(50, 16));
 
         con_panel3_1_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         con_panel3_1_label.setText("집중도");
@@ -1931,7 +1931,6 @@ public class SemesterMonthTable extends javax.swing.JFrame {
         secondPanel.setPreferredSize(new java.awt.Dimension(1400, 340));
 
 
-        
         pro_panel1.setBackground(new java.awt.Color(204, 229, 255));
         pro_panel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         pro_panel1.setPreferredSize(new java.awt.Dimension(50, 340));
@@ -2607,6 +2606,8 @@ public class SemesterMonthTable extends javax.swing.JFrame {
                                 .addComponent(hwk_panel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(pro_panel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
+
+
 
         thirdPanel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         thirdPanel.setPreferredSize(new java.awt.Dimension(1400, 180));
