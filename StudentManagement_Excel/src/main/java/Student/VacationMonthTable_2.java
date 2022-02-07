@@ -38,6 +38,7 @@ public class VacationMonthTable_2 extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
     private void initComponents(ArrayList<StudentData> sList, ArrayList<StudentClinicData> scList, ArrayList<StudentOpinionData> soList, String sName, String userMonth) {
 
+        System.out.println("2/7 push test");
 
         //<editor-fold desc="변수 선언">
         title_panel = new javax.swing.JPanel();
