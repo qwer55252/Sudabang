@@ -124,6 +124,7 @@ public class ReadSheet {
                         case 10 -> s.setProgress(value);
                         case 11 -> s.setMonth(value);
                         case 12 -> s.setWeek(value);
+                        case 13 -> s.setClass_average(value); //일단 평균이라고 잡아둠(임시)
                     }
                     s.setWeek_num(s.getMonth()+"월 "+s.getWeek()+"주차");
                     cellCnt++;
