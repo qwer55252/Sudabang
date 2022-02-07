@@ -394,7 +394,7 @@ public class VacationMonthTable_1 extends javax.swing.JFrame {
         setTitle(sName+"학생 "+userMonth+"월 "+"월간관리표");
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
-        setPreferredSize(new java.awt.Dimension(1400, 930));
+        setPreferredSize(new java.awt.Dimension(1400, 914));
 
         title_panel.setBackground(new java.awt.Color(255, 255, 255));
         title_panel.setPreferredSize(new java.awt.Dimension(1400, 30));
@@ -662,6 +662,9 @@ public class VacationMonthTable_1 extends javax.swing.JFrame {
                                 .addGap(0, 0, 0)
                                 .addComponent(att_panel3_label10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
+
+        att_panel4.setPreferredSize(new Dimension(150, 176));
+        att_panel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
 
         att_panel4_label1.setText("- 무단 결석 3회 이상");
 
@@ -1391,7 +1394,7 @@ public class VacationMonthTable_1 extends javax.swing.JFrame {
         con_panel1_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         con_panel1_label.setText("<html>&nbsp수업<br>집중도</html>");
         con_panel1_label.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
-        con_panel1_label.setPreferredSize(new java.awt.Dimension(50, 150));
+        con_panel1_label.setPreferredSize(new java.awt.Dimension(50, 176));
 
         javax.swing.GroupLayout con_panel1Layout = new javax.swing.GroupLayout(con_panel1);
         con_panel1.setLayout(con_panel1Layout);
@@ -1637,11 +1640,10 @@ public class VacationMonthTable_1 extends javax.swing.JFrame {
         hws_panel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         hws_panel1.setPreferredSize(new java.awt.Dimension(50, 176));
 
-        hws_panel1_label.setBackground(new java.awt.Color(255, 255, 204));
+        hws_panel1_label.setBackground(new java.awt.Color(204, 255, 229));
         hws_panel1_label.setFont(new java.awt.Font("Dialog", Font.BOLD, 15)); // NOI18N
         hws_panel1_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         hws_panel1_label.setText("<html>&nbsp과제<br>수행도</html>");
-        hws_panel1_label.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 0));
         hws_panel1_label.setPreferredSize(new java.awt.Dimension(50, 150));
 
         javax.swing.GroupLayout hws_panel1Layout = new javax.swing.GroupLayout(hws_panel1);
@@ -1755,11 +1757,12 @@ public class VacationMonthTable_1 extends javax.swing.JFrame {
                                 .addComponent(hws_panel2_label11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        hws_panel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+
         hws_panel3.setPreferredSize(new java.awt.Dimension(50, 176));
 
         hws_panel3_1.setBackground(new java.awt.Color(204, 255, 229));
-        hws_panel3_1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 0));
+        hws_panel3_1.setPreferredSize(new java.awt.Dimension(50, 16));
+        hws_panel3_1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
 
         hws_panel3_1_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         hws_panel3_1_label.setText("수행도");
