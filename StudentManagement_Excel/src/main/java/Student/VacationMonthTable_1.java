@@ -41,6 +41,9 @@ public class VacationMonthTable_1 extends javax.swing.JFrame {
 
     private void initComponents(ArrayList<StudentData> sList, ArrayList<StudentClinicData> scList, String sName, String userMonth) {
 
+        System.out.println("2/7 push test");
+
+
         //<editor-fold desc="변수 선언">
         title_panel = new javax.swing.JPanel();
         title_label = new javax.swing.JLabel();
