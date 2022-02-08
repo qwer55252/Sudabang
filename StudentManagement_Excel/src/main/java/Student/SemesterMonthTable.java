@@ -41,6 +41,8 @@ public class SemesterMonthTable extends javax.swing.JFrame {
 
     private void initComponents(ArrayList<StudentData> sList, ArrayList<StudentClinicData> scList, ArrayList<StudentOpinionData> soList, String sName, String userMonth) {
 
+        System.out.println("성취단계 오른쪽정렬 왜 그러지?");
+
         //<editor-fold desc="변수 선언">
         title_panel = new javax.swing.JPanel();
         title_label = new javax.swing.JLabel();
