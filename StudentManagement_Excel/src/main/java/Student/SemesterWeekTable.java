@@ -45,7 +45,7 @@ public class SemesterWeekTable extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         // font
-        Font title_font = new Font("Dialog",Font.BOLD, 25);
+        Font title_font = new Font("Dialog",Font.BOLD, 20);
         Font font1 = new Font("Dialog",Font.BOLD, 20);
         Font font2 = new Font("Dialog", Font.BOLD, 15);
         Font font3 = new Font("Dialog", Font.BOLD, 15);
@@ -71,7 +71,7 @@ public class SemesterWeekTable extends JFrame {
 
         // title - NORTH
         JPanel title = new JPanel(); // NORTH
-        title.setPreferredSize(new Dimension(this.getWidth(), 60));
+        title.setPreferredSize(new Dimension(this.getWidth(), 30));
         title.setBackground(Color.white);
 
         JLabel title_label = new JLabel("<"+sName+" 학생 "+userMonth+"월 "+userWeek+"주차"+" 주간관리표"+">");
@@ -276,6 +276,7 @@ public class SemesterWeekTable extends JFrame {
         pro_panel3_2.setBounds(0, 25, 250, 50);
         pro_panel3_2.setBorder(border1);
         pro_panel3_2.setBackground(light_gray_color);
+
         JLabel proBookLabel = new JLabel(printList.get(0).getTextbook());
         proBookLabel.setFont(plainFont);
         pro_panel3_2.add(proBookLabel); //정보 저장
@@ -284,6 +285,7 @@ public class SemesterWeekTable extends JFrame {
         pro_panel3_3.setBounds(0, 75, 250, 50);
         pro_panel3_3.setBorder(border1);
         pro_panel3_3.setBackground(light_gray_color);
+
         JLabel proBookLabel2 = new JLabel(printList.get(1).getTextbook());
         proBookLabel2.setFont(plainFont);
         pro_panel3_3.add(proBookLabel2); //정보 저장
@@ -291,8 +293,6 @@ public class SemesterWeekTable extends JFrame {
         pro_panel3.add(pro_panel3_1);
         pro_panel3.add(pro_panel3_2);
         pro_panel3.add(pro_panel3_3);
-
-
 
 
         JPanel pro_panel4 = new JPanel();
@@ -327,8 +327,9 @@ public class SemesterWeekTable extends JFrame {
 //        StyleConstants.setAlignment(ce3, StyleConstants.ALIGN_CENTER);
 //        doc3.setParagraphAttributes(0, doc3.getLength(), ce3, false);
 //        pro_panel4_2.add(tpName3);
-        JLabel proLabel = new JLabel("<html>"+printList.get(0).getProgress().replace("\n","<br>")+"</html>");
-        proLabel.setHorizontalAlignment(JLabel.LEFT);
+
+        JLabel proLabel = new JLabel("<html><p style=\"width:230\">"+printList.get(0).getProgress().replace("\n","<br>")+"</p></html>");
+        proLabel.setHorizontalAlignment(JLabel.CENTER);
         proLabel.setFont(plainFont);
         pro_panel4_2.add(proLabel);
 
@@ -347,7 +348,8 @@ public class SemesterWeekTable extends JFrame {
 //        StyleConstants.setAlignment(ce4, StyleConstants.ALIGN_CENTER);
 //        doc4.setParagraphAttributes(0, doc4.getLength(), ce4, false);
 //        pro_panel4_3.add(tpName4);
-        JLabel proLabel2 = new JLabel("<html>"+printList.get(1).getProgress().replace("\n","<br>")+"</html>");
+
+        JLabel proLabel2 = new JLabel("<html><p style=\"width:230\">"+printList.get(1).getProgress().replace("\n","<br>")+"</p></html>");
         proLabel2.setHorizontalAlignment(JLabel.CENTER);
         proLabel2.setFont(plainFont);
         pro_panel4_3.add(proLabel2);
@@ -356,7 +358,6 @@ public class SemesterWeekTable extends JFrame {
         pro_panel4.add(pro_panel4_1);
         pro_panel4.add(pro_panel4_2);
         pro_panel4.add(pro_panel4_3);
-
 
 
         progress.add(pro_panel1);
@@ -738,7 +739,7 @@ public class SemesterWeekTable extends JFrame {
 //        StyleConstants.setAlignment(ce, StyleConstants.ALIGN_CENTER);
 //        doc.setParagraphAttributes(0, doc.getLength(), ce, false);
 //        hwk_panel2_2.add(tpName);
-        JLabel hwkLabel = new JLabel("<html>"+printList.get(0).getAssignment_comment().replace("\n","<br>")+"</html>");
+        JLabel hwkLabel = new JLabel("<html><p style=\"width:230\">"+printList.get(0).getAssignment_comment().replace("\n","<br>")+"</p></html>");
         hwkLabel.setHorizontalAlignment(JLabel.CENTER);
         hwkLabel.setFont(plainFont);
         hwk_panel2_2.add(hwkLabel);
@@ -746,7 +747,6 @@ public class SemesterWeekTable extends JFrame {
 
         hwk_panel2.add(hwk_panel2_1);
         hwk_panel2.add(hwk_panel2_2);
-
 
 
         JPanel hwk_panel3 = new JPanel();
@@ -782,14 +782,13 @@ public class SemesterWeekTable extends JFrame {
 //        StyleConstants.setAlignment(ce2, StyleConstants.ALIGN_CENTER);
 //        doc2.setParagraphAttributes(0, doc2.getLength(), ce2, false);
 //        hwk_panel3_2.add(tpName2);
-        JLabel hwkLabel2 = new JLabel("<html>"+printList.get(1).getAssignment_comment().replace("\n","<br>")+"</html>");
+        JLabel hwkLabel2 = new JLabel("<html><p style=\"width:230\">"+printList.get(1).getAssignment_comment().replace("\n","<br>")+"</p></html>");
         hwkLabel2.setHorizontalAlignment(JLabel.CENTER);
         hwkLabel2.setFont(plainFont);
         hwk_panel3_2.add(hwkLabel2);
 
         hwk_panel3.add(hwk_panel3_1);
         hwk_panel3.add(hwk_panel3_2);
-
 
 
         JPanel hwk_panel4 = new JPanel(new GridLayout(9, 1));
@@ -927,7 +926,7 @@ public class SemesterWeekTable extends JFrame {
 
         setSize(880, 900);
         setVisible(true);
-        dispose();
+        //dispose();
 
     }
 }
