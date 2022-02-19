@@ -28,7 +28,7 @@ public class SemesterMonthTable extends javax.swing.JFrame {
      */
 
     public SemesterMonthTable(ArrayList<StudentData> sList, ArrayList<StudentClinicData> scList, ArrayList<StudentOpinionData> soList, String sName, String userMonth) {
-            initComponents(sList, scList, soList, sName, userMonth);
+        initComponents(sList, scList, soList, sName, userMonth);
     }
 
     /**
@@ -40,8 +40,6 @@ public class SemesterMonthTable extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">
 
     private void initComponents(ArrayList<StudentData> sList, ArrayList<StudentClinicData> scList, ArrayList<StudentOpinionData> soList, String sName, String userMonth) {
-
-        System.out.println("성취단계 오른쪽정렬 왜 그러지?");
 
         //<editor-fold desc="변수 선언">
         title_panel = new javax.swing.JPanel();
@@ -528,7 +526,7 @@ public class SemesterMonthTable extends javax.swing.JFrame {
 
 
 
-        
+
         att_panel3.setPreferredSize(new java.awt.Dimension(100, 176));
 
         att_panel3_1.setBackground(new java.awt.Color(255, 255, 204));
@@ -908,7 +906,7 @@ public class SemesterMonthTable extends javax.swing.JFrame {
         test_panel3_label9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         test_panel3_label9.setText(printList.get(8).getTest_score());
-        
+
         test_panel3_label9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         test_panel3_label9.setMaximumSize(new java.awt.Dimension(10, 16));
         test_panel3_label9.setMinimumSize(new java.awt.Dimension(10, 16));
@@ -917,7 +915,7 @@ public class SemesterMonthTable extends javax.swing.JFrame {
         test_panel3_label10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         test_panel3_label10.setText(printList.get(9).getTest_score());
-        
+
         test_panel3_label10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         test_panel3_label10.setMaximumSize(new java.awt.Dimension(10, 16));
         test_panel3_label10.setMinimumSize(new java.awt.Dimension(10, 16));
@@ -1175,14 +1173,14 @@ public class SemesterMonthTable extends javax.swing.JFrame {
         pln_panel2_label10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         pln_panel2_label10.setText(printList.get(8).getDate());
-        
+
         pln_panel2_label10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         pln_panel2_label10.setPreferredSize(new java.awt.Dimension(50, 16));
 
         pln_panel2_label11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         pln_panel2_label11.setText(printList.get(9).getDate());
-        
+
         pln_panel2_label11.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         pln_panel2_label11.setPreferredSize(new java.awt.Dimension(50, 16));
 
@@ -1312,14 +1310,14 @@ public class SemesterMonthTable extends javax.swing.JFrame {
         pln_panel3_label9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         pln_panel3_label9.setText(printList.get(8).getPlanner_performance());
-        
+
         pln_panel3_label9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         pln_panel3_label9.setPreferredSize(new java.awt.Dimension(50, 16));
 
         pln_panel3_label10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         pln_panel3_label10.setText(printList.get(9).getPlanner_performance());
-        
+
         pln_panel3_label10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         pln_panel3_label10.setPreferredSize(new java.awt.Dimension(50, 16));
 
@@ -2539,7 +2537,7 @@ public class SemesterMonthTable extends javax.swing.JFrame {
         hwk_panel3_label10.setText("<html><p style=\"width:450\">"+printList.get(9).getAssignment_comment().replace("\n","<br>")+"</p></html>");
         hwk_panel3_label10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
 
-        
+
         javax.swing.GroupLayout hwk_panel3Layout = new javax.swing.GroupLayout(hwk_panel3);
         hwk_panel3.setLayout(hwk_panel3Layout);
         hwk_panel3Layout.setHorizontalGroup(
@@ -2587,7 +2585,7 @@ public class SemesterMonthTable extends javax.swing.JFrame {
         secondPanel.setLayout(secondPanelLayout);
 
 
-        
+
         secondPanelLayout.setHorizontalGroup(
                 secondPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(secondPanelLayout.createSequentialGroup()
@@ -2800,15 +2798,13 @@ public class SemesterMonthTable extends javax.swing.JFrame {
         cln_panel4_1.setLayout(cln_panel4_1Layout);
         cln_panel4_1Layout.setHorizontalGroup(
                 cln_panel4_1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cln_panel4_1Layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(cln_panel4_1_label, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addContainerGap())
+                        .addComponent(cln_panel4_1_label, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         cln_panel4_1Layout.setVerticalGroup(
                 cln_panel4_1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(cln_panel4_1_label, javax.swing.GroupLayout.DEFAULT_SIZE, 18, Short.MAX_VALUE)
+                        .addComponent(cln_panel4_1_label, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
+
 
 
         cln_panel4_label1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -2840,7 +2836,7 @@ public class SemesterMonthTable extends javax.swing.JFrame {
                         .addComponent(cln_panel4_label3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(cln_panel4_label2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(cln_panel4_label1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(cln_panel4_1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(cln_panel4_1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         cln_panel4Layout.setVerticalGroup(
                 cln_panel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

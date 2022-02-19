@@ -36,7 +36,8 @@ public class SemesterClinicWeekTable extends JFrame {
         Font font2 = new Font("Dialog", Font.BOLD, 15);
         Font font3 = new Font("Dialog", Font.PLAIN, 15);
         Font plainFont = new Font("Dialog", Font.PLAIN, 13);
-        Font bigFont = new Font("Dialog",Font.BOLD, 25);
+        Font plainFont2 = new Font("Dialog", Font.PLAIN, 12); //취약유형 크기 조절
+        Font bigFont = new Font("Dialog",Font.BOLD, 35);
 
         // Color
         Color light_yellow_color = new Color(255, 255, 204);
@@ -156,7 +157,7 @@ public class SemesterClinicWeekTable extends JFrame {
         clinic_progress.setBounds(0, 110, 650, 250); // center의 0,110에 450X200 삽입
 
 
-        JLabel clinic_progress_label = new JLabel("<html>&nbsp;클리닉<br>진행현황</html>");
+        JLabel clinic_progress_label = new JLabel("<html>클<br>리<br>닉<br>진<br>행<br>현<br>황</html>");
         clinic_progress_label.setFont(font1);
         clinic_progress_label.setHorizontalAlignment(JLabel.CENTER);
         clinic_progress_label.setVerticalAlignment(JLabel.CENTER);
@@ -191,18 +192,14 @@ public class SemesterClinicWeekTable extends JFrame {
         cln_prg_panel2_2.setBackground(light_gray_color);
         cln_prg_panel2_2.setBorder(border1);
 
-        // 단원명 란이 작동기 때문에 자동 줄바꿈 처리가 되는 JTextPane사용
-        JTextPane textPane_UnitName = new JTextPane();
-        textPane_UnitName.setEditable(false);
-        textPane_UnitName.setBackground(light_gray_color);
-        textPane_UnitName.setText(printList.get(0).getUnitName());
-        //tpName의 styleDocument를 가져와 가운데 정렬 설정
-        StyledDocument doc_UnitName = textPane_UnitName.getStyledDocument();
-        SimpleAttributeSet ce_UnitName = new SimpleAttributeSet();
-        StyleConstants.setAlignment(ce_UnitName, StyleConstants.ALIGN_CENTER);
-        doc_UnitName.setParagraphAttributes(0, doc_UnitName.getLength(), ce_UnitName, false);
+        JLabel unitNameLabel = new JLabel();
+        unitNameLabel.setText("<html><p style=\"width:180\">"+printList.get(0).getUnitName()+"</p></html>");
+        unitNameLabel.setFont(plainFont);
+        unitNameLabel.setHorizontalAlignment(JLabel.CENTER);
+        unitNameLabel.setVerticalAlignment(JLabel.CENTER);
 
-        cln_prg_panel2_2.add(textPane_UnitName);
+        cln_prg_panel2_2.add(unitNameLabel);
+
 
 
         JPanel cln_prg_panel2_3 = new JPanel(new BorderLayout());
@@ -219,7 +216,7 @@ public class SemesterClinicWeekTable extends JFrame {
 
 
         JPanel cln_prg_panel2_4 = new JPanel(new BorderLayout());
-        cln_prg_panel2_4.setBounds(0, 130, 200, 150);
+        cln_prg_panel2_4.setBounds(0, 130, 200, 120);
         cln_prg_panel2_4.setBorder(border1);
         cln_prg_panel2_4.setBackground(light_gray_color);
 
@@ -260,31 +257,26 @@ public class SemesterClinicWeekTable extends JFrame {
         cln_prg_panel3_2.setBorder(border1);
         cln_prg_panel3_2.setBackground(light_gray_color);
 
-        // 취약유형 란이 작동기 때문에 자동 줄바꿈 처리가 되는 JTextPane사용
-        JTextPane textPane_WeakUnit = new JTextPane();
-        textPane_WeakUnit.setEditable(false);
-        textPane_WeakUnit.setBackground(light_gray_color);
-        textPane_WeakUnit.setText(printList.get(0).getWeakUnit());
+        JLabel weakUnit = new JLabel();
+        weakUnit.setText("<html><p style=\"width:350\">"+printList.get(0).getWeakUnit()+"</p></html>");
+        weakUnit.setFont(plainFont);
+        weakUnit.setHorizontalAlignment(JLabel.CENTER);
+        weakUnit.setVerticalAlignment(JLabel.CENTER);
 
-        //tpName의 styleDocument를 가져와 가운데 정렬 설정
-        StyledDocument doc_WeakUnit = textPane_WeakUnit.getStyledDocument();
-        SimpleAttributeSet ce_WeakUnit = new SimpleAttributeSet();
-        StyleConstants.setAlignment(ce_WeakUnit, StyleConstants.ALIGN_CENTER);
-        doc_WeakUnit.setParagraphAttributes(0, doc_WeakUnit.getLength(), ce_WeakUnit, false);
-
-        cln_prg_panel3_2.add(textPane_WeakUnit);
+        cln_prg_panel3_2.add(weakUnit);
 
 
         JPanel cln_prg_panel3_3 = new JPanel();
         cln_prg_panel3_3.setBounds(0, 100, 400, 150);
         cln_prg_panel3_3.setBorder(border1);
-        JLabel cln_prg_panel3_3_label = new JLabel("<html>" +
+        JLabel cln_prg_panel3_3_label = new JLabel();
+        cln_prg_panel3_3_label.setText("<html><p style=\"width:350\">"+
                 "* 단계별 성취사항<br>" +
                 "(오답유형을 전부 해결하지 못할 시 추가 클리닉)<br><br>" +
                 "1단계 : 클리닉 참여하지 않은 경우<br><br>" +
                 "2단계 : 오답유형 해결<br><br>" +
-                "3단계 : 오답유형 + 유사문항 해결<br><br></html>");
-        cln_prg_panel3_3_label.setFont(plainFont);
+                "3단계 : 오답유형 + 유사문항 해결<br><br>"+"</p></html>");
+        cln_prg_panel3_3_label.setFont(plainFont2);
         cln_prg_panel3_3_label.setHorizontalAlignment(JLabel.CENTER);
         cln_prg_panel3_3_label.setVerticalAlignment(JLabel.CENTER);
 
@@ -325,19 +317,13 @@ public class SemesterClinicWeekTable extends JFrame {
         detail_course_panel_2.setBorder(border1);
         detail_course_panel_2.setBackground(light_gray_color);
 
-        // 특이사항 및 조치사항 란이 작동기 때문에 자동 줄바꿈 처리가 되는 JTextPane사용
-        JTextPane textPane_DetailCourse = new JTextPane();
-        textPane_DetailCourse.setEditable(false);
-        textPane_DetailCourse.setBackground(light_gray_color);
-        textPane_DetailCourse.setText(printList.get(0).getDetailCourse());
+        JLabel detailCourse = new JLabel();
+        detailCourse.setText("<html><p style=\"width:630\">"+printList.get(0).getDetailCourse()+"</p></html>");
+        detailCourse.setFont(plainFont);
+        detailCourse.setHorizontalAlignment(JLabel.CENTER);
+        detailCourse.setVerticalAlignment(JLabel.CENTER);
 
-        //tpName의 styleDocument를 가져와 가운데 정렬 설정
-        StyledDocument doc_DetailCourse = textPane_DetailCourse.getStyledDocument();
-        SimpleAttributeSet ce_DetailCourse = new SimpleAttributeSet();
-        StyleConstants.setAlignment(ce_DetailCourse, StyleConstants.ALIGN_CENTER);
-        doc_DetailCourse.setParagraphAttributes(0, doc_DetailCourse.getLength(), ce_DetailCourse, false);
-
-        detail_course_panel_2.add(textPane_DetailCourse);
+        detail_course_panel_2.add(detailCourse);
 
         detail_course_panel.add(detail_course_panel_1);
         detail_course_panel.add(detail_course_panel_2);
@@ -365,7 +351,6 @@ public class SemesterClinicWeekTable extends JFrame {
 
         setSize(670, 650);
         setVisible(true);
-        dispose();
 
     }
 

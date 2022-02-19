@@ -1,9 +1,15 @@
 package Student;
 
+import org.bouncycastle.asn1.ocsp.Request;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.io.File;
+import java.io.*;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.http.HttpClient;
+import java.net.http.HttpResponse;
 import java.util.ArrayList;
 
 
@@ -183,7 +189,7 @@ public class Main_UI extends JFrame {
             // userMonth, userWeek 주차 캡쳐 진행
             System.out.println("파일을 저장 중입니다...");
             for (String name : re.nameList) {
-                String pathName = saveFilePath + name + " " + userMonth + "월 " + userWeek + "주차 주간관리표.png"; // 경로명 + 파일명
+                String pathName = saveFilePath + name + " " + userMonth + "월 " + userWeek + "주차 집중반 주간관리표.png"; // 경로명 + 파일명
                 new CaptureJFrame(new VacationWeekTable(re.studentList, name, userMonth, userWeek), pathName);
             }
             System.out.println("모든 파일을 저장했습니다!");
@@ -211,7 +217,7 @@ public class Main_UI extends JFrame {
             //userMonth, userWeek 주차 캡쳐 진행
             System.out.println("파일을 저장 중입니다...");
             for (String name : re.nameList){
-                String pathName = saveFilePath + name + " " + userMonth + "월 " + userWeek + "주차 클리닉 주간관리표.png"; // 경로명 + 파일명
+                String pathName = saveFilePath + name + " " + userMonth + "월 " + userWeek + "주차 집중반 클리닉 주간관리표.png"; // 경로명 + 파일명
                 new CaptureJFrame(new VacationClinicWeekTable(re.studentList, name, userMonth, userWeek), pathName);
             }
             System.out.println("모든 파일을 저장했습니다!");
@@ -242,7 +248,7 @@ public class Main_UI extends JFrame {
             //userMonth, userWeek 주차 캡쳐 진행
             System.out.println("파일을 저장 중입니다...");
             for (String name : re.nameList){
-                String pathName = saveFilePath + name + " " + userMonth + "월 " + userWeek + "주차 주간관리표.png"; // 경로명 + 파일명
+                String pathName = saveFilePath + name + " " + userMonth + "월 " + userWeek + "주차 정규반 주간관리표.png"; // 경로명 + 파일명
                 new CaptureJFrame(new SemesterWeekTable(re.studentList, name, userMonth, userWeek), pathName);
             }
             System.out.println("모든 파일을 저장했습니다!");
@@ -269,7 +275,7 @@ public class Main_UI extends JFrame {
             //userMonth, userWeek 주차 캡쳐 진행
             System.out.println("파일을 저장 중입니다...");
             for (String name : re.nameList){
-                String pathName = saveFilePath + name + " " + userMonth + "월 " + userWeek + "주차 클리닉 주간관리표.png"; // 경로명 + 파일명
+                String pathName = saveFilePath + name + " " + userMonth + "월 " + userWeek + "주차 정규반 클리닉 주간관리표.png"; // 경로명 + 파일명
                 new CaptureJFrame(new SemesterClinicWeekTable(re.studentList, name, userMonth, userWeek).getContentPane(), pathName);
             }
             System.out.println("모든 파일을 저장했습니다!");
@@ -407,6 +413,7 @@ public class Main_UI extends JFrame {
     }
 
     // 엑셀 저장 경로 버튼 액션 리스너
+
     class saveExcel_ActionListener implements ActionListener {
         private Main_UI main_ui;
         public saveExcel_ActionListener(Main_UI main_ui) {
@@ -427,7 +434,9 @@ public class Main_UI extends JFrame {
         }
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         Main_UI main_ui = new Main_UI();
     }
+
+
 }

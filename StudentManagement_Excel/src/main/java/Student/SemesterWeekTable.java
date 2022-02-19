@@ -29,15 +29,15 @@ public class SemesterWeekTable extends JFrame {
         if(printList.size() == 1){
             StudentData nullData = new StudentData();
             nullData.setName(sName);
-            nullData.setAttendance("-");
-            nullData.setDate("-");
-            nullData.setTextbook("-");
-            nullData.setProgress("-");
-            nullData.setConcentration("-");
-            nullData.setAssignment_performance("-");
-            nullData.setPlanner_performance("-");
-            nullData.setAssignment_comment("-");
-            nullData.setTest_score("-");
+            nullData.setAttendance("");
+            nullData.setDate("");
+            nullData.setTextbook("");
+            nullData.setProgress("");
+            nullData.setConcentration("");
+            nullData.setAssignment_performance("");
+            nullData.setPlanner_performance("");
+            nullData.setAssignment_comment("");
+            nullData.setTest_score("");
             printList.add(nullData);
         }
 

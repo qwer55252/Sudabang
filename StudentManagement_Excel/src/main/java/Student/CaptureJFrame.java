@@ -11,15 +11,12 @@ public class CaptureJFrame {
         // Create test file
         File saveFile = new File(captureFilePath);
 
-        // Use the ImageIO API to write the bufferedImage to a temporary file
+        BufferedImage img = new BufferedImage(c.getWidth(), c.getHeight(), BufferedImage.TYPE_INT_RGB);
+        c.paint(img.getGraphics());
         try {
-            BufferedImage im = new BufferedImage(c.getWidth(), c.getHeight(), BufferedImage.TYPE_INT_ARGB);
-            Graphics2D g2d = im.createGraphics();
-            c.printAll(g2d);
-
-            g2d.dispose();
-            ImageIO.write(im, "png", saveFile);
+            ImageIO.write(img, "png", saveFile);
         } catch (IOException e) {
+            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }

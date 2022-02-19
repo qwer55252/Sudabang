@@ -34,15 +34,15 @@ public class VacationWeekTable extends JFrame{
         for(int i=0;i<5-printSize;i++){
             StudentData nullData = new StudentData();
             nullData.setName(sName);
-            nullData.setAttendance("-");
-            nullData.setDate("-");
-            nullData.setTextbook("-");
-            nullData.setProgress("-");
-            nullData.setConcentration("-");
-            nullData.setAssignment_performance("-");
-            nullData.setPlanner_performance("-");
-            nullData.setAssignment_comment("-");
-            nullData.setTest_score("-");
+            nullData.setAttendance("");
+            nullData.setDate("");
+            nullData.setTextbook("");
+            nullData.setProgress("");
+            nullData.setConcentration("");
+            nullData.setAssignment_performance("");
+            nullData.setPlanner_performance("");
+            nullData.setAssignment_comment("");
+            nullData.setTest_score("");
             printList.add(nullData);
         }
 
@@ -307,19 +307,13 @@ public class VacationWeekTable extends JFrame{
             pah_panel4_grid_i.setBorder(border1);
             pah_panel4_grid_i.setBackground(light_gray_color);
 
-            //진도 란이 작동기 때문에 자동 줄바꿈 처리가 되는 JTextPane사용
-            JTextPane tpName = new JTextPane();
-            tpName.setEditable(false);
-            tpName.setBackground(light_gray_color);
-            tpName.setText(printList.get(i).getProgress());
+            JLabel proLabel = new JLabel();
+            proLabel.setText("<html><p style=\"width:480\">"+printList.get(i).getProgress().replace("\n","<br>")+"</p></html>");
+            proLabel.setFont(plainFont);
+            proLabel.setHorizontalAlignment(JLabel.CENTER);
+            proLabel.setVerticalAlignment(JLabel.CENTER);
 
-            //tpName의 styleDocument를 가져와 가운데 정렬 설정
-            StyledDocument doc = tpName.getStyledDocument();
-            SimpleAttributeSet ce = new SimpleAttributeSet();
-            StyleConstants.setAlignment(ce, StyleConstants.ALIGN_CENTER);
-            doc.setParagraphAttributes(0, doc.getLength(), ce, false);
-
-            pah_panel4_grid_i.add(tpName);
+            pah_panel4_grid_i.add(proLabel);
             pah_panel4_grid.add(pah_panel4_grid_i);
 
         }
@@ -355,19 +349,13 @@ public class VacationWeekTable extends JFrame{
             pah_panel5_grid_i.setBorder(border1);
             pah_panel5_grid_i.setBackground(light_gray_color);
 
-            //과제 란이 작동기 때문에 자동 줄바꿈 처리가 되는 JTextPane사용
-            JTextPane tpName = new JTextPane();
-            tpName.setEditable(false);
-            tpName.setBackground(light_gray_color);
-            tpName.setText(printList.get(i).getAssignment_comment());
+            JLabel assignLabel = new JLabel();
+            assignLabel.setText("<html><p style=\"width:480\">"+printList.get(i).getAssignment_comment().replace("\n","<br>")+"</p></html>");
+            assignLabel.setFont(plainFont);
+            assignLabel.setHorizontalAlignment(JLabel.CENTER);
+            assignLabel.setVerticalAlignment(JLabel.CENTER);
 
-            //tpName의 styleDocument를 가져와 가운데 정렬 설정
-            StyledDocument doc = tpName.getStyledDocument();
-            SimpleAttributeSet ce = new SimpleAttributeSet();
-            StyleConstants.setAlignment(ce, StyleConstants.ALIGN_CENTER);
-            doc.setParagraphAttributes(0, doc.getLength(), ce, false);
-
-            pah_panel5_grid_i.add(tpName);
+            pah_panel5_grid_i.add(assignLabel);
             pah_panel5_grid.add(pah_panel5_grid_i);
 
         }

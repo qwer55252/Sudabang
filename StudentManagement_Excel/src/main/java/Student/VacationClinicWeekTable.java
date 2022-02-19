@@ -30,19 +30,19 @@ public class VacationClinicWeekTable extends JFrame {
         //부족한 수만큼 '-'데이터로 채운 학생 인스턴스 추가
         for(int i=0;i<5-printSize;i++){
             StudentClinicData nullData = new StudentClinicData();
-            nullData.setDate("-");
-            nullData.setAttendance("-");
+            nullData.setDate("");
+            nullData.setAttendance("");
             nullData.setName(sName);
-            nullData.setUnitName("-");
-            nullData.setAchivementLevel("-");
-            nullData.setWeakUnit("-");
-            nullData.setDetailCourse("-");
-            nullData.setMonth("-");
-            nullData.setWeek("-");
-            nullData.setMonth_weekNum("-");
-            nullData.setCount("-");
-            nullData.setName_month_weekNum("-");
-            nullData.setName_month_weekNum_count("-");
+            nullData.setUnitName("");
+            nullData.setAchivementLevel("");
+            nullData.setWeakUnit("");
+            nullData.setDetailCourse("");
+            nullData.setMonth("");
+            nullData.setWeek("");
+            nullData.setMonth_weekNum("");
+            nullData.setCount("");
+            nullData.setName_month_weekNum("");
+            nullData.setName_month_weekNum_count("");
             printList.add(nullData);
         }
 
@@ -207,19 +207,13 @@ public class VacationClinicWeekTable extends JFrame {
             topUnitPanel_grid_elem.setBorder(border1);
             topUnitPanel_grid_elem.setBackground(light_gray_color);
 
-            // 특이사항 및 조치사항 란이 작동기 때문에 자동 줄바꿈 처리가 되는 JTextPane사용
-            JTextPane textPane_UnitName = new JTextPane();
-            textPane_UnitName.setEditable(false);
-            textPane_UnitName.setBackground(light_gray_color);
-            textPane_UnitName.setText(printList.get(i).getUnitName());
+            JLabel unitNameLabel = new JLabel();
+            unitNameLabel.setText("<html><p style=\"width:130\">"+printList.get(i).getUnitName()+"</p></html>");
+            unitNameLabel.setFont(plainFont);
+            unitNameLabel.setHorizontalAlignment(JLabel.CENTER);
+            unitNameLabel.setVerticalAlignment(JLabel.CENTER);
 
-            //tpName의 styleDocument를 가져와 가운데 정렬 설정
-            StyledDocument doc = textPane_UnitName.getStyledDocument();
-            SimpleAttributeSet ce = new SimpleAttributeSet();
-            StyleConstants.setAlignment(ce, StyleConstants.ALIGN_CENTER);
-            doc.setParagraphAttributes(0, doc.getLength(), ce, false);
-
-            topUnitPanel_grid_elem.add(textPane_UnitName);
+            topUnitPanel_grid_elem.add(unitNameLabel); //정보 저장
             topUnitPanel_grid.add(topUnitPanel_grid_elem);
         }
 
@@ -253,19 +247,13 @@ public class VacationClinicWeekTable extends JFrame {
             topWeakPanel_grid_elem.setBorder(border1);
             topWeakPanel_grid_elem.setBackground(light_gray_color);
 
-            // 특이사항 및 조치사항 란이 작동기 때문에 자동 줄바꿈 처리가 되는 JTextPane사용
-            JTextPane textPane_WeakUnit = new JTextPane();
-            textPane_WeakUnit.setEditable(false);
-            textPane_WeakUnit.setBackground(light_gray_color);
-            textPane_WeakUnit.setText(printList.get(i).getWeakUnit());
+            JLabel weakUnitLabel = new JLabel();
+            weakUnitLabel.setText("<html><p style=\"width:430\">"+printList.get(i).getWeakUnit()+"</p></html>");
+            weakUnitLabel.setFont(plainFont);
+            weakUnitLabel.setHorizontalAlignment(JLabel.CENTER);
+            weakUnitLabel.setVerticalAlignment(JLabel.CENTER);
 
-            //tpName의 styleDocument를 가져와 가운데 정렬 설정
-            StyledDocument doc = textPane_WeakUnit.getStyledDocument();
-            SimpleAttributeSet ce = new SimpleAttributeSet();
-            StyleConstants.setAlignment(ce, StyleConstants.ALIGN_CENTER);
-            doc.setParagraphAttributes(0, doc.getLength(), ce, false);
-
-            topWeakPanel_grid_elem.add(textPane_WeakUnit);
+            topWeakPanel_grid_elem.add(weakUnitLabel);
             topWeakPanel_grid.add(topWeakPanel_grid_elem);
         }
 
@@ -396,19 +384,13 @@ public class VacationClinicWeekTable extends JFrame {
             bottomDCPanel_grid_elem.setBorder(border1);
             bottomDCPanel_grid_elem.setBackground(light_gray_color);
 
-            // 특이사항 및 조치사항 란이 작동기 때문에 자동 줄바꿈 처리가 되는 JTextPane사용
-            JTextPane textpane_DetailCourse = new JTextPane();
-            textpane_DetailCourse.setEditable(false);
-            textpane_DetailCourse.setBackground(light_gray_color);
-            textpane_DetailCourse.setText(printList.get(i).getDetailCourse());
+            JLabel detailCourse = new JLabel();
+            detailCourse.setText("<html><p style=\"width:480\">"+printList.get(i).getDetailCourse()+"</p></html>");
+            detailCourse.setFont(plainFont);
+            detailCourse.setHorizontalAlignment(JLabel.CENTER);
+            detailCourse.setVerticalAlignment(JLabel.CENTER);
 
-            //tpName의 styleDocument를 가져와 가운데 정렬 설정
-            StyledDocument doc = textpane_DetailCourse.getStyledDocument();
-            SimpleAttributeSet ce = new SimpleAttributeSet();
-            StyleConstants.setAlignment(ce, StyleConstants.ALIGN_CENTER);
-            doc.setParagraphAttributes(0, doc.getLength(), ce, false);
-
-            bottomDCPanel_grid_elem.add(textpane_DetailCourse);
+            bottomDCPanel_grid_elem.add(detailCourse);
             bottomDCPanel_grid.add(bottomDCPanel_grid_elem);
 
         }
@@ -465,7 +447,6 @@ public class VacationClinicWeekTable extends JFrame {
 
         setSize(940, 620);
         setVisible(true);
-        //dispose();
 
 
     }
