@@ -41,8 +41,6 @@ public class SemesterMonthTable extends javax.swing.JFrame {
 
     private void initComponents(ArrayList<StudentData> sList, ArrayList<StudentClinicData> scList, ArrayList<StudentOpinionData> soList, String sName, String userMonth) {
 
-        System.out.println("성취단계 오른쪽정렬 왜 그러지?");
-
         //<editor-fold desc="변수 선언">
         title_panel = new javax.swing.JPanel();
         title_label = new javax.swing.JLabel();
@@ -2800,15 +2798,13 @@ public class SemesterMonthTable extends javax.swing.JFrame {
         cln_panel4_1.setLayout(cln_panel4_1Layout);
         cln_panel4_1Layout.setHorizontalGroup(
                 cln_panel4_1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cln_panel4_1Layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(cln_panel4_1_label, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addContainerGap())
+                        .addComponent(cln_panel4_1_label, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         cln_panel4_1Layout.setVerticalGroup(
                 cln_panel4_1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(cln_panel4_1_label, javax.swing.GroupLayout.DEFAULT_SIZE, 18, Short.MAX_VALUE)
+                        .addComponent(cln_panel4_1_label, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
+
 
 
         cln_panel4_label1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -2840,7 +2836,7 @@ public class SemesterMonthTable extends javax.swing.JFrame {
                         .addComponent(cln_panel4_label3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(cln_panel4_label2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(cln_panel4_label1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(cln_panel4_1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(cln_panel4_1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         cln_panel4Layout.setVerticalGroup(
                 cln_panel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

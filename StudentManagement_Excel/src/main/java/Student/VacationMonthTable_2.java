@@ -408,7 +408,7 @@ public class VacationMonthTable_2 extends javax.swing.JFrame {
         setTitle(sName+"학생 "+userMonth+"월 "+"월간관리표");
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
-        setPreferredSize(new java.awt.Dimension(1400, 1084));
+        setPreferredSize(new java.awt.Dimension(1400, 1114));
 
         title_panel.setBackground(new java.awt.Color(255, 255, 255));
         title_panel.setPreferredSize(new java.awt.Dimension(1400, 30));

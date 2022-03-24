@@ -41,8 +41,6 @@ public class VacationMonthTable_1 extends javax.swing.JFrame {
 
     private void initComponents(ArrayList<StudentData> sList, ArrayList<StudentClinicData> scList, String sName, String userMonth) {
 
-        System.out.println("2/7 push test");
-
 
         //<editor-fold desc="변수 선언">
         title_panel = new javax.swing.JPanel();
@@ -394,7 +392,7 @@ public class VacationMonthTable_1 extends javax.swing.JFrame {
         setTitle(sName+"학생 "+userMonth+"월 "+"월간관리표");
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
-        setPreferredSize(new java.awt.Dimension(1400, 914));
+        setPreferredSize(new java.awt.Dimension(1400, 934));
 
         title_panel.setBackground(new java.awt.Color(255, 255, 255));
         title_panel.setPreferredSize(new java.awt.Dimension(1400, 30));

@@ -19,7 +19,9 @@ public class VacationClinicWeekTable extends JFrame {
 
         //int k = 0; //k는 몇 번째 학생인지 -> 테스트용
         ArrayList<StudentClinicData> printList = new ArrayList<StudentClinicData>(); //출력할 학생의 정보들
+
         for (StudentClinicData studentClinicData : sList) { // 주간관리표 한 줄에 대하여
+            //System.out.println(studentClinicData);
             if (studentClinicData.getName().equals(sName) && (studentClinicData.getMonth().equals(userMonth) && studentClinicData.getWeek().equals(userWeek))){
                 printList.add(studentClinicData);
             }
