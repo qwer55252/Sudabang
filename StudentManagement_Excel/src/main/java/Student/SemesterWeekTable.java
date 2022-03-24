@@ -26,7 +26,9 @@ public class SemesterWeekTable extends JFrame {
                 printList.add(studentData);
             }
         }
-        if(printList.size() == 1){
+
+        int printListSize = printList.size();
+        for (int i=0;i<2-printListSize;i++) {
             StudentData nullData = new StudentData();
             nullData.setName(sName);
             nullData.setAttendance("");
@@ -40,6 +42,9 @@ public class SemesterWeekTable extends JFrame {
             nullData.setTest_score("");
             printList.add(nullData);
         }
+
+
+
 
         setTitle("주간관리표 GUI");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
